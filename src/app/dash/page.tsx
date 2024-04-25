@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import {
   Bell,
@@ -36,11 +34,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { useTheme } from "next-themes";
+import { SignOut } from "@/components/signout-button";
+import ThemeToggle from "@/components/theme-toggle";
 
 export default function Dashboard() {
-  const { setTheme } = useTheme();
-
   return (
     <main className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <div className="hidden border-r bg-muted/40 md:block">
@@ -206,7 +203,7 @@ export default function Dashboard() {
               </div>
             </form>
           </div>
-          <DropdownMenu>
+          {/* <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="icon">
                 <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
@@ -225,7 +222,8 @@ export default function Dashboard() {
                 System
               </DropdownMenuItem>
             </DropdownMenuContent>
-          </DropdownMenu>
+          </DropdownMenu> */}
+          <ThemeToggle />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" size="icon" className="rounded-full">
@@ -240,7 +238,7 @@ export default function Dashboard() {
               <DropdownMenuItem>Support</DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
-                <Link href="/signup">Logout</Link>
+                <SignOut />
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

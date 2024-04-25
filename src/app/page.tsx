@@ -1,6 +1,26 @@
+import { Button } from "@/components/ui/button";
+import { auth, signIn } from "@/lib/auth";
 import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth();
+  const user = session?.user;
+
+  if (!user) {
+    return (
+      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+        <form
+          action={async () => {
+            "use server";
+            await signIn("auth0");
+          }}
+        >
+          <Button variant="outline">Sign In</Button>
+        </form>
+      </main>
+    );
+  }
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
