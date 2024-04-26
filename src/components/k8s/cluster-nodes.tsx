@@ -18,13 +18,16 @@ export default async function ClusterNodes() {
             <Avatar className="hidden h-9 w-9 sm:flex">
               <AvatarImage src="/avatars/01.png" alt="Avatar" />
               <AvatarFallback>
-                {node.metadata?.labels["nvidia.com/gpu.product"]?.includes(
-                  "Laptop"
-                ) ? (
-                  <Laptop className="h-5 w-5" />
-                ) : (
-                  <Server className="h-5 w-5" />
-                )}
+                {
+                  // @ts-ignore
+                  node.metadata?.labels["nvidia.com/gpu.product"]?.includes(
+                    "Laptop"
+                  ) ? (
+                    <Laptop className="h-5 w-5" />
+                  ) : (
+                    <Server className="h-5 w-5" />
+                  )
+                }
               </AvatarFallback>
             </Avatar>
             <div className="grid gap-1">
@@ -37,7 +40,10 @@ export default async function ClusterNodes() {
                   {node.status?.capacity?.cpu}{" "}
                   {node.status?.nodeInfo?.architecture}
                   {", "}
-                  {node.metadata?.labels["nvidia.com/gpu.product"]!}
+                  {
+                    // @ts-ignore
+                    node.metadata?.labels["nvidia.com/gpu.product"]!
+                  }
                 </div>
               </div>
             </div>

@@ -1,9 +1,18 @@
 import * as k8s from "@kubernetes/client-node";
 import * as yaml from "yaml";
 
-export async function getNodes(): Promise<k8s.V1Node[]> {
+function getKubeConfig() {
   const kc = new k8s.KubeConfig();
-  kc.loadFromDefault();
+  kc.loadFromString(
+    Buffer.from(process.env.KUBECONFIG!, "base64").toString("utf-8")
+  );
+
+  // console.log("KubeConfig loaded");
+  return kc;
+}
+
+export async function getNodes(): Promise<k8s.V1Node[]> {
+  const kc = getKubeConfig();
 
   const client = kc.makeApiClient(k8s.CoreV1Api);
 
@@ -21,8 +30,7 @@ export async function getNodes(): Promise<k8s.V1Node[]> {
 export async function apply(
   specString: string
 ): Promise<k8s.KubernetesObject[]> {
-  const kc = new k8s.KubeConfig();
-  kc.loadFromDefault();
+  const kc = getKubeConfig();
 
   const client = k8s.KubernetesObjectApi.makeApiClient(kc);
 
