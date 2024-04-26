@@ -12,6 +12,7 @@ export const {
   signOut,
 } = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
+  // TODO: https://github.com/nextauthjs/next-auth/discussions/4124#discussioncomment-7028388
   adapter: PrismaAdapter(prisma),
   providers: [
     Auth0Provider({
@@ -20,4 +21,18 @@ export const {
       issuer: process.env.AUTH0_ISSUER,
     }),
   ],
+  callbacks: {
+    signIn: async ({ user, account, profile }) => {
+      "use server";
+      //   console.log("signIn", user, account, profile);
+
+      return true;
+    },
+  },
+  events: {
+    createUser: async (message) => {
+      "use server";
+      console.log("createUser", message.user);
+    },
+  },
 });
