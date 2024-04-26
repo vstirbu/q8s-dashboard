@@ -11,6 +11,7 @@ import {
 import { SignOut } from "@/components/signout-button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Session } from "next-auth";
+import Link from "next/link";
 
 export function UserDropdownMenu(props: { user: Session["user"] }) {
   return (
@@ -29,8 +30,10 @@ export function UserDropdownMenu(props: { user: Session["user"] }) {
       <DropdownMenuContent align="end">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Settings</DropdownMenuItem>
-        <DropdownMenuItem>Support</DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href="/settings">Settings</Link>
+        </DropdownMenuItem>
+        {/* <DropdownMenuItem>Support</DropdownMenuItem> */}
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           <SignOut />

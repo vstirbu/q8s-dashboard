@@ -28,7 +28,7 @@ export const {
 
       const created = await createRoleBindingForUser(user.email!);
 
-      console.log("createRoleBindingForUser", created);
+      console.log("createRoleBindingForUser", JSON.stringify(created, null, 2));
       return true;
     },
   },
