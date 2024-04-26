@@ -12,7 +12,7 @@ export default async function Home() {
   const user = session?.user;
 
   if (user) {
-    redirect("/dash");
+    redirect("/dashboard");
   }
 
   return (

@@ -8,7 +8,7 @@ export function SignIn() {
       action={async () => {
         "use server";
         await signIn("auth0", {
-          redirectTo: "/dash",
+          redirectTo: "/dashboard",
         });
       }}
     >
