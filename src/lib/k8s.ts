@@ -1,6 +1,16 @@
 import * as k8s from "@kubernetes/client-node";
 import * as yaml from "yaml";
 
+export async function getNodes(): Promise<k8s.V1Node[]> {
+  const kc = new k8s.KubeConfig();
+  kc.loadFromDefault();
+
+  const client = kc.makeApiClient(k8s.CoreV1Api);
+
+  const response = await client.listNode();
+  return response.body.items;
+}
+
 /**
  * Replicate the functionality of `kubectl apply`.  That is, create the resources defined in the `specFile` if they do
  * not exist, patch them if they do exist.

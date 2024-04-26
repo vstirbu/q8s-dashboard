@@ -29,6 +29,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import ThemeToggle from "@/components/theme-toggle";
 import { NavigationMenu } from "../../components/navigation-menu";
 import { UserDropdownMenu } from "../../components/user-dropdown-menu";
+import ClusterNodes from "@/components/k8s/cluster-nodes";
 
 export default async function Dashboard() {
   const session = await auth();
@@ -190,6 +191,7 @@ export default async function Dashboard() {
           <div className="flex items-center">
             <h1 className="text-lg font-semibold md:text-2xl">Dashboard</h1>
           </div>
+          <ClusterNodes />
           {/* <div
             className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm"
             x-chunk="dashboard-02-chunk-1"

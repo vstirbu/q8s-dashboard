@@ -1,0 +1,794 @@
+[
+  {
+    "metadata": {
+      "annotations": {
+        "alpha.kubernetes.io/provided-node-ip": "10.112.0.50",
+        "flannel.alpha.coreos.com/backend-data": "{\"VNI\":1,\"VtepMAC\":\"c6:f0:43:46:86:97\"}",
+        "flannel.alpha.coreos.com/backend-type": "vxlan",
+        "flannel.alpha.coreos.com/kube-subnet-manager": "true",
+        "flannel.alpha.coreos.com/public-ip": "10.112.0.50",
+        "k3s.io/hostname": "torqs",
+        "k3s.io/internal-ip": "10.112.0.50",
+        "k3s.io/node-args": "[\"agent\",\"--node-ip\",\"10.112.0.50\",\"--flannel-iface\",\"wg0\"]",
+        "k3s.io/node-config-hash": "IXTT3NPNIY7AO4QGSYGX5PNCAD5FX2ORLFWFHXXMAUTIUOE63G3Q====",
+        "k3s.io/node-env": "{\"K3S_DATA_DIR\":\"/var/lib/rancher/k3s/data/ef92c15b8f1c59f266ea4a9589be87b1b799d1682673f29721e8a1f7b0a4a97b\",\"K3S_TOKEN\":\"********\",\"K3S_URL\":\"https://10.112.0.1:6443\"}",
+        "nfd.node.kubernetes.io/extended-resources": "",
+        "nfd.node.kubernetes.io/feature-labels": "cpu-cpuid.ADX,cpu-cpuid.AESNI,cpu-cpuid.AVX,cpu-cpuid.AVX2,cpu-cpuid.AVXVNNI,cpu-cpuid.CETIBT,cpu-cpuid.CETSS,cpu-cpuid.CMPXCHG8,cpu-cpuid.FLUSH_L1D,cpu-cpuid.FMA3,cpu-cpuid.FSRM,cpu-cpuid.FXSR,cpu-cpuid.FXSROPT,cpu-cpuid.GFNI,cpu-cpuid.HRESET,cpu-cpuid.HYBRID_CPU,cpu-cpuid.IA32_ARCH_CAP,cpu-cpuid.IA32_CORE_CAP,cpu-cpuid.IBPB,cpu-cpuid.LAHF,cpu-cpuid.MD_CLEAR,cpu-cpuid.MOVBE,cpu-cpuid.MOVDIR64B,cpu-cpuid.MOVDIRI,cpu-cpuid.OSXSAVE,cpu-cpuid.PCONFIG,cpu-cpuid.PREFETCHI,cpu-cpuid.SERIALIZE,cpu-cpuid.SHA,cpu-cpuid.SPEC_CTRL_SSBD,cpu-cpuid.STIBP,cpu-cpuid.STOSB_SHORT,cpu-cpuid.SYSCALL,cpu-cpuid.SYSEE,cpu-cpuid.TME,cpu-cpuid.VAES,cpu-cpuid.VMX,cpu-cpuid.VPCLMULQDQ,cpu-cpuid.WAITPKG,cpu-cpuid.X87,cpu-cpuid.XGETBV1,cpu-cpuid.XSAVE,cpu-cpuid.XSAVEC,cpu-cpuid.XSAVEOPT,cpu-cpuid.XSAVES,cpu-cstate.enabled,cpu-hardware_multithreading,cpu-model.family,cpu-model.id,cpu-model.vendor_id,cpu-pstate.scaling_governor,cpu-pstate.status,cpu-pstate.turbo,kernel-config.NO_HZ,kernel-config.NO_HZ_IDLE,kernel-version.full,kernel-version.major,kernel-version.minor,kernel-version.revision,nvidia.com/cuda.driver.major,nvidia.com/cuda.driver.minor,nvidia.com/cuda.driver.rev,nvidia.com/cuda.runtime.major,nvidia.com/cuda.runtime.minor,nvidia.com/gfd.timestamp,nvidia.com/gpu.compute.major,nvidia.com/gpu.compute.minor,nvidia.com/gpu.count,nvidia.com/gpu.family,nvidia.com/gpu.machine,nvidia.com/gpu.memory,nvidia.com/gpu.product,nvidia.com/gpu.replicas,nvidia.com/mig.capable,pci-10de.present,pci-8086.present,pci-8086.sriov.capable,storage-nonrotationaldisk,system-os_release.ID,system-os_release.VERSION_ID,system-os_release.VERSION_ID.major,system-os_release.VERSION_ID.minor,usb-ef_0c45_6a1b.present",
+        "nfd.node.kubernetes.io/master.version": "v0.12.1",
+        "nfd.node.kubernetes.io/worker.version": "v0.12.1",
+        "node.alpha.kubernetes.io/ttl": "0",
+        "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+      },
+      "creationTimestamp": "2024-04-07T09:57:37.000Z",
+      "finalizers": ["wrangler.cattle.io/node"],
+      "labels": {
+        "beta.kubernetes.io/arch": "amd64",
+        "beta.kubernetes.io/instance-type": "k3s",
+        "beta.kubernetes.io/os": "linux",
+        "feature.node.kubernetes.io/cpu-cpuid.ADX": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.AESNI": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.AVX": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.AVX2": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.AVXVNNI": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.CETIBT": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.CETSS": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.CMPXCHG8": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.FLUSH_L1D": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.FMA3": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.FSRM": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.FXSR": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.FXSROPT": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.GFNI": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.HRESET": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.HYBRID_CPU": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.IA32_ARCH_CAP": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.IA32_CORE_CAP": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.IBPB": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.LAHF": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.MD_CLEAR": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.MOVBE": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.MOVDIR64B": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.MOVDIRI": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.OSXSAVE": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.PCONFIG": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.PREFETCHI": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.SERIALIZE": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.SHA": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.SPEC_CTRL_SSBD": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.STIBP": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.STOSB_SHORT": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.SYSCALL": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.SYSEE": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.TME": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.VAES": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.VMX": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.VPCLMULQDQ": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.WAITPKG": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.X87": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.XGETBV1": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.XSAVE": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.XSAVEC": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.XSAVEOPT": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.XSAVES": "true",
+        "feature.node.kubernetes.io/cpu-cstate.enabled": "true",
+        "feature.node.kubernetes.io/cpu-hardware_multithreading": "true",
+        "feature.node.kubernetes.io/cpu-model.family": "6",
+        "feature.node.kubernetes.io/cpu-model.id": "183",
+        "feature.node.kubernetes.io/cpu-model.vendor_id": "Intel",
+        "feature.node.kubernetes.io/cpu-pstate.scaling_governor": "powersave",
+        "feature.node.kubernetes.io/cpu-pstate.status": "active",
+        "feature.node.kubernetes.io/cpu-pstate.turbo": "true",
+        "feature.node.kubernetes.io/kernel-config.NO_HZ": "true",
+        "feature.node.kubernetes.io/kernel-config.NO_HZ_IDLE": "true",
+        "feature.node.kubernetes.io/kernel-version.full": "6.5.0-27-generic",
+        "feature.node.kubernetes.io/kernel-version.major": "6",
+        "feature.node.kubernetes.io/kernel-version.minor": "5",
+        "feature.node.kubernetes.io/kernel-version.revision": "0",
+        "feature.node.kubernetes.io/pci-10de.present": "true",
+        "feature.node.kubernetes.io/pci-8086.present": "true",
+        "feature.node.kubernetes.io/pci-8086.sriov.capable": "true",
+        "feature.node.kubernetes.io/storage-nonrotationaldisk": "true",
+        "feature.node.kubernetes.io/system-os_release.ID": "ubuntu",
+        "feature.node.kubernetes.io/system-os_release.VERSION_ID": "22.04",
+        "feature.node.kubernetes.io/system-os_release.VERSION_ID.major": "22",
+        "feature.node.kubernetes.io/system-os_release.VERSION_ID.minor": "04",
+        "feature.node.kubernetes.io/usb-ef_0c45_6a1b.present": "true",
+        "kubernetes.io/arch": "amd64",
+        "kubernetes.io/hostname": "torqs",
+        "kubernetes.io/os": "linux",
+        "node.kubernetes.io/instance-type": "k3s",
+        "nvidia.com/cuda.driver.major": "535",
+        "nvidia.com/cuda.driver.minor": "171",
+        "nvidia.com/cuda.driver.rev": "04",
+        "nvidia.com/cuda.runtime.major": "12",
+        "nvidia.com/cuda.runtime.minor": "2",
+        "nvidia.com/gfd.timestamp": "1713256519",
+        "nvidia.com/gpu.compute.major": "8",
+        "nvidia.com/gpu.compute.minor": "9",
+        "nvidia.com/gpu.count": "1",
+        "nvidia.com/gpu.family": "ampere",
+        "nvidia.com/gpu.machine": "Precision-7680",
+        "nvidia.com/gpu.memory": "16376",
+        "nvidia.com/gpu.product": "NVIDIA-GeForce-RTX-4090-Laptop-GPU",
+        "nvidia.com/gpu.replicas": "1",
+        "nvidia.com/mig.capable": "false"
+      },
+      "managedFields": [
+        {
+          "apiVersion": "v1",
+          "fieldsType": "FieldsV1",
+          "fieldsV1": {
+            "f:metadata": {
+              "f:finalizers": { ".": {}, "v:\"wrangler.cattle.io/node\"": {} }
+            }
+          },
+          "manager": "k3s-supervisor@ubuntu-s-1vcpu-1gb-fra1-01",
+          "operation": "Update",
+          "time": "2024-04-07T09:57:37.000Z"
+        },
+        {
+          "apiVersion": "v1",
+          "fieldsType": "FieldsV1",
+          "fieldsV1": {
+            "f:metadata": {
+              "f:annotations": {
+                ".": {},
+                "f:alpha.kubernetes.io/provided-node-ip": {},
+                "f:k3s.io/hostname": {},
+                "f:k3s.io/internal-ip": {},
+                "f:k3s.io/node-args": {},
+                "f:k3s.io/node-config-hash": {},
+                "f:k3s.io/node-env": {},
+                "f:node.alpha.kubernetes.io/ttl": {},
+                "f:volumes.kubernetes.io/controller-managed-attach-detach": {}
+              },
+              "f:labels": {
+                ".": {},
+                "f:beta.kubernetes.io/arch": {},
+                "f:beta.kubernetes.io/instance-type": {},
+                "f:beta.kubernetes.io/os": {},
+                "f:kubernetes.io/arch": {},
+                "f:kubernetes.io/hostname": {},
+                "f:kubernetes.io/os": {},
+                "f:node.kubernetes.io/instance-type": {}
+              }
+            },
+            "f:spec": {
+              "f:podCIDR": {},
+              "f:podCIDRs": { ".": {}, "v:\"10.42.1.0/24\"": {} },
+              "f:providerID": {}
+            }
+          },
+          "manager": "k3s",
+          "operation": "Update",
+          "time": "2024-04-16T08:35:16.000Z"
+        },
+        {
+          "apiVersion": "v1",
+          "fieldsType": "FieldsV1",
+          "fieldsV1": {
+            "f:metadata": {
+              "f:annotations": {
+                "f:nfd.node.kubernetes.io/extended-resources": {},
+                "f:nfd.node.kubernetes.io/feature-labels": {},
+                "f:nfd.node.kubernetes.io/master.version": {},
+                "f:nfd.node.kubernetes.io/worker.version": {}
+              },
+              "f:labels": {
+                "f:feature.node.kubernetes.io/cpu-cpuid.ADX": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.AESNI": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.AVX": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.AVX2": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.AVXVNNI": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.CETIBT": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.CETSS": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.CMPXCHG8": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.FLUSH_L1D": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.FMA3": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.FSRM": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.FXSR": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.FXSROPT": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.GFNI": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.HRESET": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.HYBRID_CPU": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.IA32_ARCH_CAP": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.IA32_CORE_CAP": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.IBPB": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.LAHF": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.MD_CLEAR": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.MOVBE": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.MOVDIR64B": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.MOVDIRI": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.OSXSAVE": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.PCONFIG": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.PREFETCHI": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.SERIALIZE": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.SHA": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.SPEC_CTRL_SSBD": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.STIBP": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.STOSB_SHORT": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.SYSCALL": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.SYSEE": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.TME": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.VAES": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.VMX": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.VPCLMULQDQ": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.WAITPKG": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.X87": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.XGETBV1": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.XSAVE": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.XSAVEC": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.XSAVEOPT": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.XSAVES": {},
+                "f:feature.node.kubernetes.io/cpu-cstate.enabled": {},
+                "f:feature.node.kubernetes.io/cpu-hardware_multithreading": {},
+                "f:feature.node.kubernetes.io/cpu-model.family": {},
+                "f:feature.node.kubernetes.io/cpu-model.id": {},
+                "f:feature.node.kubernetes.io/cpu-model.vendor_id": {},
+                "f:feature.node.kubernetes.io/cpu-pstate.scaling_governor": {},
+                "f:feature.node.kubernetes.io/cpu-pstate.status": {},
+                "f:feature.node.kubernetes.io/cpu-pstate.turbo": {},
+                "f:feature.node.kubernetes.io/kernel-config.NO_HZ": {},
+                "f:feature.node.kubernetes.io/kernel-config.NO_HZ_IDLE": {},
+                "f:feature.node.kubernetes.io/kernel-version.full": {},
+                "f:feature.node.kubernetes.io/kernel-version.major": {},
+                "f:feature.node.kubernetes.io/kernel-version.minor": {},
+                "f:feature.node.kubernetes.io/kernel-version.revision": {},
+                "f:feature.node.kubernetes.io/pci-10de.present": {},
+                "f:feature.node.kubernetes.io/pci-8086.present": {},
+                "f:feature.node.kubernetes.io/pci-8086.sriov.capable": {},
+                "f:feature.node.kubernetes.io/storage-nonrotationaldisk": {},
+                "f:feature.node.kubernetes.io/system-os_release.ID": {},
+                "f:feature.node.kubernetes.io/system-os_release.VERSION_ID": {},
+                "f:feature.node.kubernetes.io/system-os_release.VERSION_ID.major": {},
+                "f:feature.node.kubernetes.io/system-os_release.VERSION_ID.minor": {},
+                "f:feature.node.kubernetes.io/usb-ef_0c45_6a1b.present": {},
+                "f:nvidia.com/cuda.driver.major": {},
+                "f:nvidia.com/cuda.driver.minor": {},
+                "f:nvidia.com/cuda.driver.rev": {},
+                "f:nvidia.com/cuda.runtime.major": {},
+                "f:nvidia.com/cuda.runtime.minor": {},
+                "f:nvidia.com/gfd.timestamp": {},
+                "f:nvidia.com/gpu.compute.major": {},
+                "f:nvidia.com/gpu.compute.minor": {},
+                "f:nvidia.com/gpu.count": {},
+                "f:nvidia.com/gpu.family": {},
+                "f:nvidia.com/gpu.machine": {},
+                "f:nvidia.com/gpu.memory": {},
+                "f:nvidia.com/gpu.product": {},
+                "f:nvidia.com/gpu.replicas": {},
+                "f:nvidia.com/mig.capable": {}
+              }
+            }
+          },
+          "manager": "nfd-master",
+          "operation": "Update",
+          "time": "2024-04-16T08:36:18.000Z"
+        },
+        {
+          "apiVersion": "v1",
+          "fieldsType": "FieldsV1",
+          "fieldsV1": {
+            "f:metadata": {
+              "f:annotations": {
+                "f:flannel.alpha.coreos.com/backend-data": {},
+                "f:flannel.alpha.coreos.com/backend-type": {},
+                "f:flannel.alpha.coreos.com/kube-subnet-manager": {},
+                "f:flannel.alpha.coreos.com/public-ip": {}
+              }
+            },
+            "f:status": {
+              "f:allocatable": { "f:memory": {}, "f:nvidia.com/gpu": {} },
+              "f:capacity": { "f:memory": {}, "f:nvidia.com/gpu": {} },
+              "f:conditions": {
+                "k:{\"type\":\"DiskPressure\"}": {
+                  "f:lastHeartbeatTime": {},
+                  "f:lastTransitionTime": {},
+                  "f:message": {},
+                  "f:reason": {},
+                  "f:status": {}
+                },
+                "k:{\"type\":\"MemoryPressure\"}": {
+                  "f:lastHeartbeatTime": {},
+                  "f:lastTransitionTime": {},
+                  "f:message": {},
+                  "f:reason": {},
+                  "f:status": {}
+                },
+                "k:{\"type\":\"PIDPressure\"}": {
+                  "f:lastHeartbeatTime": {},
+                  "f:lastTransitionTime": {},
+                  "f:message": {},
+                  "f:reason": {},
+                  "f:status": {}
+                },
+                "k:{\"type\":\"Ready\"}": {
+                  "f:lastHeartbeatTime": {},
+                  "f:lastTransitionTime": {},
+                  "f:message": {},
+                  "f:reason": {},
+                  "f:status": {}
+                }
+              },
+              "f:images": {},
+              "f:nodeInfo": { "f:bootID": {}, "f:kernelVersion": {} }
+            }
+          },
+          "manager": "k3s",
+          "operation": "Update",
+          "subresource": "status",
+          "time": "2024-04-26T14:08:11.000Z"
+        }
+      ],
+      "name": "torqs",
+      "resourceVersion": "654423",
+      "uid": "6d442441-3812-45fa-82cc-2fe3010aa163"
+    },
+    "spec": {
+      "podCIDR": "10.42.1.0/24",
+      "podCIDRs": ["10.42.1.0/24"],
+      "providerID": "k3s://torqs"
+    },
+    "status": {
+      "addresses": [
+        { "address": "10.112.0.50", "type": "InternalIP" },
+        { "address": "torqs", "type": "Hostname" }
+      ],
+      "allocatable": {
+        "cpu": "32",
+        "ephemeral-storage": "500930798814",
+        "hugepages-1Gi": "0",
+        "hugepages-2Mi": "0",
+        "memory": "65511656Ki",
+        "nvidia.com/gpu": "1",
+        "pods": "110"
+      },
+      "capacity": {
+        "cpu": "32",
+        "ephemeral-storage": "514937088Ki",
+        "hugepages-1Gi": "0",
+        "hugepages-2Mi": "0",
+        "memory": "65511656Ki",
+        "nvidia.com/gpu": "1",
+        "pods": "110"
+      },
+      "conditions": [
+        {
+          "lastHeartbeatTime": "2024-04-26T14:08:11.000Z",
+          "lastTransitionTime": "2024-04-16T08:35:17.000Z",
+          "message": "kubelet has sufficient memory available",
+          "reason": "KubeletHasSufficientMemory",
+          "status": "False",
+          "type": "MemoryPressure"
+        },
+        {
+          "lastHeartbeatTime": "2024-04-26T14:08:11.000Z",
+          "lastTransitionTime": "2024-04-16T08:35:17.000Z",
+          "message": "kubelet has no disk pressure",
+          "reason": "KubeletHasNoDiskPressure",
+          "status": "False",
+          "type": "DiskPressure"
+        },
+        {
+          "lastHeartbeatTime": "2024-04-26T14:08:11.000Z",
+          "lastTransitionTime": "2024-04-16T08:35:17.000Z",
+          "message": "kubelet has sufficient PID available",
+          "reason": "KubeletHasSufficientPID",
+          "status": "False",
+          "type": "PIDPressure"
+        },
+        {
+          "lastHeartbeatTime": "2024-04-26T14:08:11.000Z",
+          "lastTransitionTime": "2024-04-16T08:35:17.000Z",
+          "message": "kubelet is posting ready status. AppArmor enabled",
+          "reason": "KubeletReady",
+          "status": "True",
+          "type": "Ready"
+        }
+      ],
+      "daemonEndpoints": { "kubeletEndpoint": { "Port": 10250 } },
+      "images": [
+        {
+          "names": [
+            "docker.io/vstirbu/benchmark-deps@sha256:46e6e53399a75a2bd614f8b71c72b546d46d8e2531bfe0fb86a4831d6d886701",
+            "docker.io/vstirbu/benchmark-deps:latest"
+          ],
+          "sizeBytes": 2426650471
+        },
+        {
+          "names": [
+            "nvcr.io/nvidia/gpu-feature-discovery@sha256:8d1ec78f2b1ddb7f0c47453d0427231190747bda411733a7dd0c8f5196f09e9c",
+            "nvcr.io/nvidia/gpu-feature-discovery:v0.8.2"
+          ],
+          "sizeBytes": 166015065
+        },
+        {
+          "names": [
+            "nvcr.io/nvidia/k8s/cuda-sample@sha256:59261e419d6d48a772aad5bb213f9f1588fcdb042b115ceb7166c89a51f03363",
+            "nvcr.io/nvidia/k8s/cuda-sample:nbody"
+          ],
+          "sizeBytes": 122383440
+        },
+        {
+          "names": [
+            "nvcr.io/nvidia/k8s-device-plugin@sha256:50aa9517d771e3b0ffa7fded8f1e988dba680a7ff5efce162ce31d1b5ec043e2",
+            "nvcr.io/nvidia/k8s-device-plugin:v0.14.5"
+          ],
+          "sizeBytes": 109988678
+        },
+        {
+          "names": [
+            "registry.k8s.io/nfd/node-feature-discovery@sha256:445ed7b7c8580825c23a6f3835c1f13718fcf72b393f51e852aa5bdda04657e7",
+            "registry.k8s.io/nfd/node-feature-discovery:v0.12.1"
+          ],
+          "sizeBytes": 73669644
+        },
+        {
+          "names": [
+            "docker.io/rancher/mirrored-metrics-server@sha256:20b8b36f8cac9e25aa2a0ff35147b13643bfec603e7e7480886632330a3bbc59",
+            "docker.io/rancher/mirrored-metrics-server:v0.7.0"
+          ],
+          "sizeBytes": 19434712
+        },
+        {
+          "names": [
+            "docker.io/rancher/local-path-provisioner@sha256:aee53cadc62bd023911e7f077877d047c5b3c269f9bba25724d558654f43cea0",
+            "docker.io/rancher/local-path-provisioner:v0.0.26"
+          ],
+          "sizeBytes": 17182090
+        },
+        {
+          "names": [
+            "docker.io/library/alpine@sha256:c5b1261d6d3e43071626931fc004f70149baeba2c8ec672bd4f27761f8e1ad6b",
+            "docker.io/library/alpine:latest"
+          ],
+          "sizeBytes": 3412367
+        },
+        {
+          "names": [
+            "docker.io/rancher/mirrored-pause@sha256:74c4244427b7312c5b901fe0f67cbc53683d06f4f24c6faee65d4182bf0fa893",
+            "docker.io/rancher/mirrored-pause:3.6"
+          ],
+          "sizeBytes": 301463
+        }
+      ],
+      "nodeInfo": {
+        "architecture": "amd64",
+        "bootID": "9e8c7118-bc37-4e33-a7f0-d8ac7b0fbabe",
+        "containerRuntimeVersion": "containerd://1.7.11-k3s2",
+        "kernelVersion": "6.5.0-27-generic",
+        "kubeProxyVersion": "v1.28.8+k3s1",
+        "kubeletVersion": "v1.28.8+k3s1",
+        "machineID": "9ad8499244ea44bf857831cda24a8f51",
+        "operatingSystem": "linux",
+        "osImage": "Ubuntu 22.04.4 LTS",
+        "systemUUID": "4c4c4544-0031-3510-804e-c3c04f513034"
+      }
+    }
+  },
+  {
+    "metadata": {
+      "annotations": {
+        "alpha.kubernetes.io/provided-node-ip": "10.112.0.1",
+        "flannel.alpha.coreos.com/backend-data": "{\"VNI\":1,\"VtepMAC\":\"32:64:d9:31:56:e5\"}",
+        "flannel.alpha.coreos.com/backend-type": "vxlan",
+        "flannel.alpha.coreos.com/kube-subnet-manager": "true",
+        "flannel.alpha.coreos.com/public-ip": "10.112.0.1",
+        "k3s.io/external-ip": "159.89.15.85,159.89.15.85",
+        "k3s.io/hostname": "ubuntu-s-1vcpu-1gb-fra1-01",
+        "k3s.io/internal-ip": "10.112.0.1",
+        "k3s.io/node-args": "[\"server\",\"--write-kubeconfig-mode\",\"644\",\"--tls-san\",\"159.89.15.85\",\"--tls-san\",\"torqs.qubernetes.dev\",\"--flannel-iface\",\"wg0\",\"--advertise-address\",\"10.112.0.1\",\"--node-external-ip\",\"159.89.15.85\",\"--write-kubeconfig-mode\",\"644\",\"--tls-san\",\"159.89.15.85\",\"--disable\",\"servicelb\",\"--disable\",\"traefik\",\"--node-external-ip\",\"159.89.15.85\",\"--advertise-address\",\"10.112.0.1\",\"--flannel-iface\",\"wg0\",\"--kube-apiserver-arg\",\"oidc-issuer-url=https://torqs.eu.auth0.com/\",\"--kube-apiserver-arg\",\"oidc-client-id=ustCs9yJtZpD18jvQ8xvPH1mFORNnO9g\",\"--kube-apiserver-arg\",\"oidc-username-claim=email\",\"--kube-apiserver-arg\",\"oidc-groups-claim=groups\",\"--kube-apiserver-arg\",\"oidc-username-prefix=oidc:\"]",
+        "k3s.io/node-config-hash": "7P4KE24PSRUJWXHI5JDYYXXGN4E3VKDTNQAM3JPE44SGQ2QN6OVA====",
+        "k3s.io/node-env": "{\"K3S_DATA_DIR\":\"/var/lib/rancher/k3s/data/ef92c15b8f1c59f266ea4a9589be87b1b799d1682673f29721e8a1f7b0a4a97b\"}",
+        "nfd.node.kubernetes.io/extended-resources": "",
+        "nfd.node.kubernetes.io/feature-labels": "cpu-cpuid.AESNI,cpu-cpuid.AVX,cpu-cpuid.AVX2,cpu-cpuid.CMPXCHG8,cpu-cpuid.FMA3,cpu-cpuid.FXSR,cpu-cpuid.FXSROPT,cpu-cpuid.HYPERVISOR,cpu-cpuid.IBPB,cpu-cpuid.LAHF,cpu-cpuid.MD_CLEAR,cpu-cpuid.MOVBE,cpu-cpuid.OSXSAVE,cpu-cpuid.SPEC_CTRL_SSBD,cpu-cpuid.SYSCALL,cpu-cpuid.SYSEE,cpu-cpuid.VMX,cpu-cpuid.X87,cpu-cpuid.XSAVE,cpu-cpuid.XSAVEOPT,cpu-hardware_multithreading,cpu-model.family,cpu-model.id,cpu-model.vendor_id,kernel-config.NO_HZ,kernel-config.NO_HZ_IDLE,kernel-version.full,kernel-version.major,kernel-version.minor,kernel-version.revision,pci-1af4.present,system-os_release.ID,system-os_release.VERSION_ID,system-os_release.VERSION_ID.major,system-os_release.VERSION_ID.minor",
+        "nfd.node.kubernetes.io/master.version": "v0.12.1",
+        "nfd.node.kubernetes.io/worker.version": "v0.12.1",
+        "node.alpha.kubernetes.io/ttl": "0",
+        "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+      },
+      "creationTimestamp": "2024-04-07T09:56:56.000Z",
+      "finalizers": ["wrangler.cattle.io/node"],
+      "labels": {
+        "beta.kubernetes.io/arch": "amd64",
+        "beta.kubernetes.io/instance-type": "k3s",
+        "beta.kubernetes.io/os": "linux",
+        "feature.node.kubernetes.io/cpu-cpuid.AESNI": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.AVX": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.AVX2": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.CMPXCHG8": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.FMA3": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.FXSR": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.FXSROPT": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.HYPERVISOR": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.IBPB": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.LAHF": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.MD_CLEAR": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.MOVBE": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.OSXSAVE": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.SPEC_CTRL_SSBD": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.SYSCALL": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.SYSEE": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.VMX": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.X87": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.XSAVE": "true",
+        "feature.node.kubernetes.io/cpu-cpuid.XSAVEOPT": "true",
+        "feature.node.kubernetes.io/cpu-hardware_multithreading": "false",
+        "feature.node.kubernetes.io/cpu-model.family": "6",
+        "feature.node.kubernetes.io/cpu-model.id": "63",
+        "feature.node.kubernetes.io/cpu-model.vendor_id": "Intel",
+        "feature.node.kubernetes.io/kernel-config.NO_HZ": "true",
+        "feature.node.kubernetes.io/kernel-config.NO_HZ_IDLE": "true",
+        "feature.node.kubernetes.io/kernel-version.full": "5.15.0-102-generic",
+        "feature.node.kubernetes.io/kernel-version.major": "5",
+        "feature.node.kubernetes.io/kernel-version.minor": "15",
+        "feature.node.kubernetes.io/kernel-version.revision": "0",
+        "feature.node.kubernetes.io/pci-1af4.present": "true",
+        "feature.node.kubernetes.io/system-os_release.ID": "ubuntu",
+        "feature.node.kubernetes.io/system-os_release.VERSION_ID": "22.04",
+        "feature.node.kubernetes.io/system-os_release.VERSION_ID.major": "22",
+        "feature.node.kubernetes.io/system-os_release.VERSION_ID.minor": "04",
+        "kubernetes.io/arch": "amd64",
+        "kubernetes.io/hostname": "ubuntu-s-1vcpu-1gb-fra1-01",
+        "kubernetes.io/os": "linux",
+        "node-role.kubernetes.io/control-plane": "true",
+        "node-role.kubernetes.io/master": "true",
+        "node.kubernetes.io/instance-type": "k3s"
+      },
+      "managedFields": [
+        {
+          "apiVersion": "v1",
+          "fieldsType": "FieldsV1",
+          "fieldsV1": {
+            "f:metadata": {
+              "f:finalizers": { ".": {}, "v:\"wrangler.cattle.io/node\"": {} },
+              "f:labels": {
+                "f:node-role.kubernetes.io/control-plane": {},
+                "f:node-role.kubernetes.io/master": {}
+              }
+            }
+          },
+          "manager": "k3s-supervisor@ubuntu-s-1vcpu-1gb-fra1-01",
+          "operation": "Update",
+          "time": "2024-04-07T09:57:00.000Z"
+        },
+        {
+          "apiVersion": "v1",
+          "fieldsType": "FieldsV1",
+          "fieldsV1": {
+            "f:metadata": {
+              "f:annotations": {
+                "f:nfd.node.kubernetes.io/extended-resources": {},
+                "f:nfd.node.kubernetes.io/feature-labels": {},
+                "f:nfd.node.kubernetes.io/master.version": {},
+                "f:nfd.node.kubernetes.io/worker.version": {}
+              },
+              "f:labels": {
+                "f:feature.node.kubernetes.io/cpu-cpuid.AESNI": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.AVX": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.AVX2": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.CMPXCHG8": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.FMA3": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.FXSR": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.FXSROPT": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.HYPERVISOR": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.IBPB": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.LAHF": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.MD_CLEAR": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.MOVBE": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.OSXSAVE": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.SPEC_CTRL_SSBD": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.SYSCALL": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.SYSEE": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.VMX": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.X87": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.XSAVE": {},
+                "f:feature.node.kubernetes.io/cpu-cpuid.XSAVEOPT": {},
+                "f:feature.node.kubernetes.io/cpu-hardware_multithreading": {},
+                "f:feature.node.kubernetes.io/cpu-model.family": {},
+                "f:feature.node.kubernetes.io/cpu-model.id": {},
+                "f:feature.node.kubernetes.io/cpu-model.vendor_id": {},
+                "f:feature.node.kubernetes.io/kernel-config.NO_HZ": {},
+                "f:feature.node.kubernetes.io/kernel-config.NO_HZ_IDLE": {},
+                "f:feature.node.kubernetes.io/kernel-version.full": {},
+                "f:feature.node.kubernetes.io/kernel-version.major": {},
+                "f:feature.node.kubernetes.io/kernel-version.minor": {},
+                "f:feature.node.kubernetes.io/kernel-version.revision": {},
+                "f:feature.node.kubernetes.io/pci-1af4.present": {},
+                "f:feature.node.kubernetes.io/system-os_release.ID": {},
+                "f:feature.node.kubernetes.io/system-os_release.VERSION_ID": {},
+                "f:feature.node.kubernetes.io/system-os_release.VERSION_ID.major": {},
+                "f:feature.node.kubernetes.io/system-os_release.VERSION_ID.minor": {}
+              }
+            }
+          },
+          "manager": "nfd-master",
+          "operation": "Update",
+          "time": "2024-04-12T15:49:24.000Z"
+        },
+        {
+          "apiVersion": "v1",
+          "fieldsType": "FieldsV1",
+          "fieldsV1": {
+            "f:metadata": {
+              "f:annotations": {
+                ".": {},
+                "f:alpha.kubernetes.io/provided-node-ip": {},
+                "f:k3s.io/external-ip": {},
+                "f:k3s.io/hostname": {},
+                "f:k3s.io/internal-ip": {},
+                "f:k3s.io/node-args": {},
+                "f:k3s.io/node-config-hash": {},
+                "f:k3s.io/node-env": {},
+                "f:node.alpha.kubernetes.io/ttl": {},
+                "f:volumes.kubernetes.io/controller-managed-attach-detach": {}
+              },
+              "f:labels": {
+                ".": {},
+                "f:beta.kubernetes.io/arch": {},
+                "f:beta.kubernetes.io/instance-type": {},
+                "f:beta.kubernetes.io/os": {},
+                "f:kubernetes.io/arch": {},
+                "f:kubernetes.io/hostname": {},
+                "f:kubernetes.io/os": {},
+                "f:node.kubernetes.io/instance-type": {}
+              }
+            },
+            "f:spec": {
+              "f:podCIDR": {},
+              "f:podCIDRs": { ".": {}, "v:\"10.42.0.0/24\"": {} },
+              "f:providerID": {}
+            }
+          },
+          "manager": "k3s",
+          "operation": "Update",
+          "time": "2024-04-23T14:28:00.000Z"
+        },
+        {
+          "apiVersion": "v1",
+          "fieldsType": "FieldsV1",
+          "fieldsV1": {
+            "f:metadata": {
+              "f:annotations": {
+                "f:flannel.alpha.coreos.com/backend-data": {},
+                "f:flannel.alpha.coreos.com/backend-type": {},
+                "f:flannel.alpha.coreos.com/kube-subnet-manager": {},
+                "f:flannel.alpha.coreos.com/public-ip": {}
+              }
+            },
+            "f:status": {
+              "f:addresses": {
+                "k:{\"type\":\"ExternalIP\"}": {
+                  ".": {},
+                  "f:address": {},
+                  "f:type": {}
+                }
+              },
+              "f:allocatable": { "f:ephemeral-storage": {}, "f:memory": {} },
+              "f:capacity": { "f:ephemeral-storage": {}, "f:memory": {} },
+              "f:conditions": {
+                "k:{\"type\":\"DiskPressure\"}": { "f:lastHeartbeatTime": {} },
+                "k:{\"type\":\"MemoryPressure\"}": {
+                  "f:lastHeartbeatTime": {}
+                },
+                "k:{\"type\":\"PIDPressure\"}": { "f:lastHeartbeatTime": {} },
+                "k:{\"type\":\"Ready\"}": {
+                  "f:lastHeartbeatTime": {},
+                  "f:lastTransitionTime": {},
+                  "f:message": {},
+                  "f:reason": {},
+                  "f:status": {}
+                }
+              },
+              "f:images": {},
+              "f:nodeInfo": { "f:bootID": {}, "f:kernelVersion": {} }
+            }
+          },
+          "manager": "k3s",
+          "operation": "Update",
+          "subresource": "status",
+          "time": "2024-04-26T14:10:01.000Z"
+        }
+      ],
+      "name": "ubuntu-s-1vcpu-1gb-fra1-01",
+      "resourceVersion": "654469",
+      "uid": "281e2df8-72ff-4220-bc0a-ffbbd435b680"
+    },
+    "spec": {
+      "podCIDR": "10.42.0.0/24",
+      "podCIDRs": ["10.42.0.0/24"],
+      "providerID": "k3s://ubuntu-s-1vcpu-1gb-fra1-01"
+    },
+    "status": {
+      "addresses": [
+        { "address": "10.112.0.1", "type": "InternalIP" },
+        { "address": "159.89.15.85", "type": "ExternalIP" },
+        { "address": "ubuntu-s-1vcpu-1gb-fra1-01", "type": "Hostname" }
+      ],
+      "allocatable": {
+        "cpu": "1",
+        "ephemeral-storage": "24530000263",
+        "hugepages-2Mi": "0",
+        "memory": "980404Ki",
+        "pods": "110"
+      },
+      "capacity": {
+        "cpu": "1",
+        "ephemeral-storage": "25215872Ki",
+        "hugepages-2Mi": "0",
+        "memory": "980404Ki",
+        "pods": "110"
+      },
+      "conditions": [
+        {
+          "lastHeartbeatTime": "2024-04-26T14:10:01.000Z",
+          "lastTransitionTime": "2024-04-07T09:56:56.000Z",
+          "message": "kubelet has sufficient memory available",
+          "reason": "KubeletHasSufficientMemory",
+          "status": "False",
+          "type": "MemoryPressure"
+        },
+        {
+          "lastHeartbeatTime": "2024-04-26T14:10:01.000Z",
+          "lastTransitionTime": "2024-04-07T09:56:56.000Z",
+          "message": "kubelet has no disk pressure",
+          "reason": "KubeletHasNoDiskPressure",
+          "status": "False",
+          "type": "DiskPressure"
+        },
+        {
+          "lastHeartbeatTime": "2024-04-26T14:10:01.000Z",
+          "lastTransitionTime": "2024-04-07T09:56:56.000Z",
+          "message": "kubelet has sufficient PID available",
+          "reason": "KubeletHasSufficientPID",
+          "status": "False",
+          "type": "PIDPressure"
+        },
+        {
+          "lastHeartbeatTime": "2024-04-26T14:10:01.000Z",
+          "lastTransitionTime": "2024-04-23T14:28:04.000Z",
+          "message": "kubelet is posting ready status. AppArmor enabled",
+          "reason": "KubeletReady",
+          "status": "True",
+          "type": "Ready"
+        }
+      ],
+      "daemonEndpoints": { "kubeletEndpoint": { "Port": 10250 } },
+      "images": [
+        {
+          "names": [
+            "registry.k8s.io/nfd/node-feature-discovery@sha256:445ed7b7c8580825c23a6f3835c1f13718fcf72b393f51e852aa5bdda04657e7",
+            "registry.k8s.io/nfd/node-feature-discovery:v0.12.1"
+          ],
+          "sizeBytes": 73669644
+        },
+        {
+          "names": [
+            "docker.io/rancher/mirrored-coredns-coredns@sha256:a11fafae1f8037cbbd66c5afa40ba2423936b72b4fd50a7034a7e8b955163594",
+            "docker.io/rancher/mirrored-coredns-coredns:1.10.1"
+          ],
+          "sizeBytes": 16190137
+        },
+        {
+          "names": [
+            "docker.io/rancher/mirrored-pause@sha256:74c4244427b7312c5b901fe0f67cbc53683d06f4f24c6faee65d4182bf0fa893",
+            "docker.io/rancher/mirrored-pause:3.6"
+          ],
+          "sizeBytes": 301463
+        }
+      ],
+      "nodeInfo": {
+        "architecture": "amd64",
+        "bootID": "5e36faf8-e6d2-4a06-a8d6-ca64525d131a",
+        "containerRuntimeVersion": "containerd://1.7.11-k3s2",
+        "kernelVersion": "5.15.0-102-generic",
+        "kubeProxyVersion": "v1.28.8+k3s1",
+        "kubeletVersion": "v1.28.8+k3s1",
+        "machineID": "1122dedb6839f33baeeddf2966123c59",
+        "operatingSystem": "linux",
+        "osImage": "Ubuntu 22.04.4 LTS",
+        "systemUUID": "21b57104-0782-4665-b726-4cbe1f47a065"
+      }
+    }
+  }
+]

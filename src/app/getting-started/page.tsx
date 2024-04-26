@@ -39,7 +39,10 @@ import { SignOut } from "@/components/signout-button";
 import ThemeToggle from "@/components/theme-toggle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-import GettingStarted from "@/app/getting-started/getting-started.mdx";
+import GettingStarted, {
+  // @ts-ignore
+  frontmatter,
+} from "@/app/getting-started/getting-started.mdx";
 import { NavigationMenu } from "@/components/navigation-menu";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { UserDropdownMenu } from "../../components/user-dropdown-menu";
@@ -203,7 +206,7 @@ export default async function Dashboard() {
         <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
           <div className="flex items-center">
             <h1 className="text-lg font-semibold md:text-2xl">
-              Getting started
+              {frontmatter.title}
             </h1>
           </div>
           <div
