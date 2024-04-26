@@ -1,9 +1,9 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { PrismaClient } from "@prisma/client";
+import k8s from "@kubernetes/client-node";
 import NextAuth from "next-auth";
 import Auth0Provider from "next-auth/providers/auth0";
-
-const prisma = new PrismaClient();
+import prisma from "@/lib/db";
+import { createRoleBindingForUser } from "@/lib/k8s";
 
 export const {
   handlers: { GET, POST },
@@ -26,6 +26,9 @@ export const {
       "use server";
       //   console.log("signIn", user, account, profile);
 
+      const created = await createRoleBindingForUser(user.email!);
+
+      console.log("createRoleBindingForUser", created);
       return true;
     },
   },
@@ -33,6 +36,10 @@ export const {
     createUser: async (message) => {
       "use server";
       console.log("createUser", message.user);
+
+      const created = await createRoleBindingForUser(message.user.email!);
+
+      console.log("createRoleBindingForUser", created);
     },
   },
 });
