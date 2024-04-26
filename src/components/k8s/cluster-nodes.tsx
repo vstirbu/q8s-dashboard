@@ -2,7 +2,7 @@ import TimeAgo from "@/components/time-ago";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getNodes } from "@/lib/k8s";
-import { Laptop, Server } from "lucide-react";
+import { Cpu, Laptop, Server } from "lucide-react";
 
 export default async function ClusterNodes() {
   const nodes = await getNodes();
@@ -31,11 +31,15 @@ export default async function ClusterNodes() {
               <p className="text-sm font-medium leading-none">
                 {node.metadata!.name}
               </p>
-              <p className="text-sm text-muted-foreground">
-                {node.status?.capacity?.cpu} CPU{" "}
-                {node.status?.nodeInfo?.architecture}{" "}
-                {node.metadata?.labels["nvidia.com/gpu.product"]!}
-              </p>
+              <div className="flex items-center gap-1">
+                <Cpu className="h-4 w-4" />
+                <div className="text-sm text-muted-foreground">
+                  {node.status?.capacity?.cpu}{" "}
+                  {node.status?.nodeInfo?.architecture}
+                  {", "}
+                  {node.metadata?.labels["nvidia.com/gpu.product"]!}
+                </div>
+              </div>
             </div>
             <div className="ml-auto font-medium">
               <TimeAgo
