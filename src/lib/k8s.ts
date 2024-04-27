@@ -78,15 +78,15 @@ export async function createRoleBindingForUser(email: string) {
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-    name: oidc:${email}
+  name: oidc:${email}
 subjects:
-    -   kind: User
-        name: oidc:${email}
-        apiGroup: rbac.authorization.k8s.io
+- kind: User
+  name: oidc:${email}
+  apiGroup: rbac.authorization.k8s.io
 roleRef:
-    kind: ClusterRole
-    name: q8s-user
-    apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: q8s-user
+  apiGroup: rbac.authorization.k8s.io
 `;
 
   return apply(spec);

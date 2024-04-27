@@ -31,6 +31,7 @@ import { NavigationMenu } from "../../components/navigation-menu";
 import { UserDropdownMenu } from "../../components/user-dropdown-menu";
 import ClusterNodes from "@/components/k8s/cluster-nodes";
 import SearchProducts from "@/components/search-products";
+import { Secrets } from "@/components/secrets";
 
 export default async function Dashboard() {
   const session = await auth();
@@ -145,20 +146,18 @@ export default async function Dashboard() {
           <div className="flex items-center">
             <h1 className="text-lg font-semibold md:text-2xl">Settings</h1>
           </div>
-          <div
+          {/* <div
             className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm"
             x-chunk="dashboard-02-chunk-1"
           >
             <div className="flex flex-col items-center gap-1 text-center">
-              {/* <h3 className="text-2xl font-bold tracking-tight">
-                You have no products
-              </h3> */}
               <p className="text-sm text-muted-foreground">
                 Download configuration files to get started.
               </p>
               <Button className="mt-4">Download</Button>
             </div>
-          </div>
+          </div> */}
+          <Secrets />
         </main>
       </div>
     </main>

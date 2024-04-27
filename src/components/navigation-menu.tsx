@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   Home,
@@ -8,6 +10,7 @@ import {
   Users,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { usePathname } from "next/navigation";
 
 const menuOptions = [
   { title: "Dashboard", icon: Home, href: "/dashboard", selected: true },
@@ -19,6 +22,16 @@ const menuOptions = [
 ];
 
 export function NavigationMenu() {
+  const pathname = usePathname();
+
+  menuOptions.map((option) => {
+    if (option.href === pathname) {
+      option.selected = true;
+    } else {
+      option.selected = false;
+    }
+  });
+
   return (
     <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
       {menuOptions.map((option) => (
