@@ -26,7 +26,7 @@ async function NodesList() {
       {nodes.map((node) => (
         <div key={node.metadata!.name} className="flex items-center gap-4">
           <Avatar className="hidden h-9 w-9 sm:flex">
-            <AvatarImage src="/avatars/01.png" alt="Avatar" />
+            {/* <AvatarImage src="/avatars/01.png" alt="Avatar" /> */}
             <AvatarFallback>
               {
                 // @ts-ignore
