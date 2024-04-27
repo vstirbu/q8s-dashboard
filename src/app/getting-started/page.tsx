@@ -198,16 +198,23 @@ export default async function Dashboard() {
               {frontmatter.title}
             </h1>
           </div>
-          <div
+
+          {/* <div
             className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm"
-            x-chunk="dashboard-02-chunk-1"
+            // x-chunk="dashboard-02-chunk-1"
           >
-            <div className="flex flex-col prose prose-md dark:prose-invert p-4">
-              <ScrollArea className="h-[700px]">
+            <ScrollArea className="h-[700px] w-full max-w-3xl prose prose-md dark:prose-invert">
+              <GettingStarted />
+            </ScrollArea>
+            <div className="flex flex-col p-4"></div>
+          </div> */}
+          <ScrollArea className="h-[600px] w-full rounded-md border p-4">
+            <div className="mx-auto max-w-3xl px-4 md:px-6 lg:px-8">
+              <div className="space-y-6 prose prose-md dark:prose-invert">
                 <GettingStarted />
-              </ScrollArea>
+              </div>
             </div>
-          </div>
+          </ScrollArea>
         </main>
       </div>
     </main>
