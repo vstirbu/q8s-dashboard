@@ -32,6 +32,7 @@ import { UserDropdownMenu } from "../../components/user-dropdown-menu";
 import ClusterNodes from "@/components/k8s/cluster-nodes";
 import SearchProducts from "@/components/search-products";
 import { Secrets } from "@/components/secrets";
+import KubernetesConfig from "@/components/cards/cluster-config";
 
 export default async function Dashboard() {
   const session = await auth();
@@ -157,7 +158,7 @@ export default async function Dashboard() {
               <Button className="mt-4">Download</Button>
             </div>
           </div> */}
-          <Secrets />
+          <KubernetesConfig />
         </main>
       </div>
     </main>

@@ -20,6 +20,19 @@ export async function getNodes(): Promise<k8s.V1Node[]> {
   return response.body.items;
 }
 
+export async function getSecret(user: string): Promise<k8s.V1Secret> {
+  const kc = getKubeConfig();
+
+  const client = kc.makeApiClient(k8s.CoreV1Api);
+
+  const response = await client.readNamespacedSecret(
+    `token-${serviceAccountName(user)}`,
+    "default"
+  );
+
+  return response.body;
+}
+
 /**
  * Replicate the functionality of `kubectl apply`.  That is, create the resources defined in the `specFile` if they do
  * not exist, patch them if they do exist.
@@ -88,6 +101,52 @@ roleRef:
   name: q8s-user
   apiGroup: rbac.authorization.k8s.io
 `;
+
+  return apply(spec);
+}
+
+const serviceAccountName = (user: string) => `sa-for-user-${user}`;
+
+export async function createServiceAccount(user: string) {
+  const spec = `
+apiversion: v1
+kind: ServiceAccount
+metadata:
+  name: ${serviceAccountName(user)}
+`;
+
+  return apply(spec);
+}
+
+export async function createRoleBindingForServiceAccount(user: string) {
+  const spec = `
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: q8s:${user}
+subjects:
+  - kind: ServiceAccount
+    name: ${serviceAccountName(user)}
+    namespace: default
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: q8s-user
+`;
+
+  return apply(spec);
+}
+
+export async function createSecret(user: string) {
+  const spec = `
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: token-sa-for-user-${user}
+    annotations:
+      kubernetes.io/service-account.name: ${serviceAccountName(user)}
+  type: kubernetes.io/service-account-token
+  `;
 
   return apply(spec);
 }

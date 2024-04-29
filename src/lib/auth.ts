@@ -3,7 +3,12 @@ import k8s from "@kubernetes/client-node";
 import NextAuth from "next-auth";
 import Auth0Provider from "next-auth/providers/auth0";
 import prisma from "@/lib/db";
-import { createRoleBindingForUser } from "@/lib/k8s";
+import {
+  createRoleBindingForServiceAccount,
+  createRoleBindingForUser,
+  createSecret,
+  createServiceAccount,
+} from "@/lib/k8s";
 
 export const {
   handlers: { GET, POST },
@@ -29,6 +34,31 @@ export const {
       const created = await createRoleBindingForUser(user.email!);
 
       console.log("createRoleBindingForUser", JSON.stringify(created, null, 2));
+
+      try {
+        await createServiceAccount(user.id!);
+        console.log("Service account created");
+      } catch (e) {
+        console.error(e);
+        console.log("Failed to create service account");
+      }
+
+      try {
+        await createRoleBindingForServiceAccount(user.id!);
+        console.log("Role binding created");
+      } catch (error) {
+        console.error(error);
+        console.log("Failed to create role binding for service account");
+      }
+
+      try {
+        await createSecret(user.id!);
+        console.log("Secret created");
+      } catch (error) {
+        console.error(error);
+        console.log("Failed to create secret");
+      }
+
       return true;
     },
   },

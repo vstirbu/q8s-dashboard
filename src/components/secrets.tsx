@@ -39,7 +39,9 @@ import {
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Download, Plus, Trash } from "lucide-react";
+import { Plus, Trash } from "lucide-react";
+import { DownloadButton } from "./DownloadButton";
+import { downloadConfig } from "../app/actions/kubernetes";
 
 export function Secrets() {
   return (
@@ -59,9 +61,7 @@ export function Secrets() {
               Created on April 15, 2023
             </p>
           </div>
-          <Button size="sm" variant="outline">
-            <Download className="h-4 w-4" />
-          </Button>
+          <DownloadButton downloadConfig={downloadConfig} />
           <Dialog>
             <DialogTrigger asChild>
               <Button size="sm" variant="destructive">
