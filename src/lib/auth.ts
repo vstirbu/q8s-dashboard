@@ -2,6 +2,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import k8s from "@kubernetes/client-node";
 import NextAuth from "next-auth";
 import Auth0Provider from "next-auth/providers/auth0";
+import GitHubProvider from "next-auth/providers/github";
 import prisma from "@/lib/db";
 import {
   createRoleBindingForServiceAccount,
@@ -9,6 +10,8 @@ import {
   createSecret,
   createServiceAccount,
 } from "@/lib/k8s";
+
+const adapter = PrismaAdapter(prisma);
 
 export const {
   handlers: { GET, POST },
@@ -18,22 +21,49 @@ export const {
 } = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
   // TODO: https://github.com/nextauthjs/next-auth/discussions/4124#discussioncomment-7028388
-  adapter: PrismaAdapter(prisma),
+  adapter,
   providers: [
-    Auth0Provider({
-      clientId: process.env.AUTH0_CLIENT_ID as string,
-      clientSecret: process.env.AUTH0_CLIENT_SECRET as string,
-      issuer: process.env.AUTH0_ISSUER,
-    }),
+    GitHubProvider,
+    // Auth0Provider({
+    //   clientId: process.env.AUTH0_CLIENT_ID as string,
+    //   clientSecret: process.env.AUTH0_CLIENT_SECRET as string,
+    //   issuer: process.env.AUTH0_ISSUER,
+    // }),
   ],
   callbacks: {
+    // session: async ({ session, token, user }) => {
+    //   "use server";
+    //   console.log("session", session, token, user);
+
+    //   return session;
+    // },
+    // jwt: async ({token, user, account, profile, trigger}) => {
+    //   "use server";
+    //   console.log("jwt", token, user, account, profile, trigger);
+
+    //   return token;
+    // },
     signIn: async ({ user, account, profile }) => {
       "use server";
-      //   console.log("signIn", user, account, profile);
+      // console.log("signIn", user, account, profile);
+
+      const _user = await adapter.getUserByEmail!(user.email!);
+
+      if (_user === null) {
+        // should redirect to signup page
+      }
+
+      return true;
+    },
+  },
+  events: {
+    createUser: async ({ user }) => {
+      "use server";
+      console.log("createUser", user);
 
       const created = await createRoleBindingForUser(user.email!);
 
-      console.log("createRoleBindingForUser", JSON.stringify(created, null, 2));
+      // console.log("createRoleBindingForUser", created);
 
       try {
         await createServiceAccount(user.id!);
@@ -59,17 +89,7 @@ export const {
         console.log("Failed to create secret");
       }
 
-      return true;
-    },
-  },
-  events: {
-    createUser: async (message) => {
-      "use server";
-      console.log("createUser", message.user);
-
-      const created = await createRoleBindingForUser(message.user.email!);
-
-      console.log("createRoleBindingForUser", created);
+      console.log("User configured", user);
     },
   },
 });
