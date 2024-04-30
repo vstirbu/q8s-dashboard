@@ -10,9 +10,9 @@ import { Download } from "lucide-react";
 import { DownloadButton } from "../DownloadButton";
 import { downloadConfig } from "@/app/actions/kubernetes";
 
-export default function KubernetesConfig() {
+export default function KubernetesConfig(props: { className?: string }) {
   return (
-    <Card className="max-w-xl">
+    <Card className={props.className}>
       <CardHeader>
         <div className="flex items-center gap-3">
           <Download className="h-5 w-5" />

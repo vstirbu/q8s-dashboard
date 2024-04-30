@@ -33,10 +33,15 @@ import ClusterNodes from "@/components/k8s/cluster-nodes";
 import SearchProducts from "@/components/search-products";
 import { Secrets } from "@/components/secrets";
 import KubernetesConfig from "@/components/cards/cluster-config";
+import { UserInfo } from "@/components/user-info";
 
 export default async function Dashboard() {
   const session = await auth();
   const user = session?.user;
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <main className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
@@ -158,7 +163,10 @@ export default async function Dashboard() {
               <Button className="mt-4">Download</Button>
             </div>
           </div> */}
-          <KubernetesConfig />
+          <div className="grid grid-flow-col auto-cols-max gap-4 md:grid-cols-2">
+            <UserInfo user={user} className="w-full max-w-md" />
+            <KubernetesConfig className="max-w-xl" />
+          </div>
         </main>
       </div>
     </main>
