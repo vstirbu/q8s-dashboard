@@ -8,7 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import { DownloadButton } from "../DownloadButton";
-import { downloadConfig } from "@/app/actions/kubernetes";
+import { downloadConfig } from "@/actions/kubernetes";
 
 export default function KubernetesConfig(props: { className?: string }) {
   return (

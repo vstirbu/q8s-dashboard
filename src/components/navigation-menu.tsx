@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import {
+  Footprints,
   Home,
   LineChart,
   Package,
@@ -13,9 +14,18 @@ import { Badge } from "@/components/ui/badge";
 import { usePathname } from "next/navigation";
 
 const menuOptions = [
-  { title: "Dashboard", icon: Home, href: "/dashboard", selected: true },
-  { title: "Getting Started", icon: Users, href: "/getting-started" },
-  { title: "Settings", icon: Settings, href: "/settings" },
+  {
+    title: "Dashboard",
+    icon: Home,
+    href: "/account/dashboard",
+    selected: true,
+  },
+  {
+    title: "Getting Started",
+    icon: Footprints,
+    href: "/account/getting-started",
+  },
+  { title: "Settings", icon: Settings, href: "/account/settings" },
   // { title: "Orders", icon: ShoppingCart, href: "#" },
   // { title: "Products", icon: Package, href: "#" },
   // { title: "Analytics", icon: LineChart, href: "#" },
