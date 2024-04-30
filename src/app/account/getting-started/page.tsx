@@ -1,51 +1,10 @@
-import Link from "next/link";
-import {
-  Bell,
-  CircleUser,
-  Home,
-  LineChart,
-  Menu,
-  Moon,
-  Package,
-  Package2,
-  Rotate3D,
-  Search,
-  ShoppingCart,
-  Sun,
-  Users,
-} from "lucide-react";
 import { auth } from "@/lib/auth";
-
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { SignOut } from "@/components/signout-button";
-import ThemeToggle from "@/components/theme-toggle";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import GettingStarted, {
   // @ts-ignore
   frontmatter,
-} from "@/app/account/getting-started/getting-started.mdx";
-import { NavigationMenu } from "@/components/navigation-menu";
+} from "@/app/account/getting-started/getting-started-docker.mdx";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { UserDropdownMenu } from "../../../components/user-dropdown-menu";
 
 export default async function Dashboard() {
   const session = await auth();

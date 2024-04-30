@@ -1,0 +1,47 @@
+---
+title: Qubernetes user guide
+---
+
+## Installation
+
+### Prerequisites
+
+Install the required tools and set up the environment to use Qubernetes TORQS.
+
+- [Docker](https://www.docker.com/get-started)
+
+### Cluster configuration
+
+Get your cluster configuration file from the [settings](/account/settings) page.
+
+## Usage
+
+Replace `/path/to/config` and `/path/to/workspace` to your configuration. Start Jupyter Lab in the Docker container:
+
+```bash
+docker run -p 8888:8888 \
+  -v /path/to/config:/home/jupyter/.kube/config  \
+  -v /path/to/workspace:/workspace \
+  ghcr.io/torqs-project/q8s-devenv:main
+```
+
+Open notebook and select the Q8s kernel to run the quantum circuits in the cluster.
+
+## Limitations
+
+### Notebook execution
+
+The kernel is able to execute only one cell. All the code should be in a single cell. Notebook magic functions are not supported.
+
+### Dependencies
+
+The docker image used to run the circuits is the cluster is currently hardcoded with the following dependencies:
+
+```
+qiskit==1.0.0
+qiskit-aer-gpu==0.13.3
+qiskit_algorithms
+qiskit_ibm_runtime
+numpy
+networkx
+```

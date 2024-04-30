@@ -31,7 +31,7 @@ export function UserDropdownMenu(props: { user: Session["user"] }) {
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <Link href="/settings">Settings</Link>
+          <Link href="/account/settings">Settings</Link>
         </DropdownMenuItem>
         {/* <DropdownMenuItem>Support</DropdownMenuItem> */}
         <DropdownMenuSeparator />
