@@ -9,7 +9,7 @@ export function SignIn() {
       action={async () => {
         "use server";
         await signIn("github", {
-          redirectTo: "/dashboard",
+          redirectTo: "/account/dashboard",
         });
       }}
     >
