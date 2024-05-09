@@ -7,6 +7,7 @@ const config = {
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
+    "./mdx-components.tsx",
   ],
   prefix: "",
   theme: {
@@ -73,8 +74,20 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
+    hljs: {
+      theme: "atom-one-dark",
+    },
   },
-  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+  safelist: [
+    {
+      pattern: /hljs+/,
+    },
+  ],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("tailwind-highlightjs"),
+    require("@tailwindcss/typography"),
+  ],
 } satisfies Config;
 
 export default config;

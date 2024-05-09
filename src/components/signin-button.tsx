@@ -1,5 +1,4 @@
 import { signIn } from "@/lib/auth";
-import { redirect } from "next/navigation";
 import { Button } from "./ui/button";
 import { Github } from "lucide-react";
 
