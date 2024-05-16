@@ -1,37 +1,5 @@
-import Link from "next/link";
-import {
-  Bell,
-  Home,
-  LineChart,
-  Menu,
-  Moon,
-  Package,
-  Package2,
-  Rotate3D,
-  Search,
-  ShoppingCart,
-  Sun,
-  Users,
-} from "lucide-react";
 import { auth } from "@/lib/auth";
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import ThemeToggle from "@/components/theme-toggle";
-import { NavigationMenu } from "../../../components/navigation-menu";
-import { UserDropdownMenu } from "../../../components/user-dropdown-menu";
-import ClusterNodes from "@/components/k8s/cluster-nodes";
-import SearchProducts from "@/components/search-products";
-import { Secrets } from "@/components/secrets";
 import KubernetesConfig from "@/components/cards/cluster-config";
 import { UserInfo } from "@/components/user-info";
 
@@ -59,9 +27,9 @@ export default async function Dashboard() {
               <Button className="mt-4">Download</Button>
             </div>
           </div> */}
-      <div className="grid grid-flow-col auto-cols-max gap-4 md:grid-cols-2">
-        <UserInfo user={user} className="w-full max-w-md" />
-        <KubernetesConfig className="max-w-xl" />
+      <div className="flex gap-4">
+        <UserInfo user={user} className="max-w-md" />
+        <KubernetesConfig className="max-w-md" />
       </div>
     </main>
   );
