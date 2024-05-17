@@ -18,19 +18,6 @@ async function NodesList() {
     getNodes().then(async (nodes) => {
       await sleep(1000);
       clearTimeout(timeout);
-
-      const ready = nodes
-        .filter((node) =>
-          node.status?.conditions?.some(
-            (c) => c.type === "Ready" && c.reason === "KubeletReady"
-          )
-        )
-        .filter(
-          (node) => node.metadata?.labels!["nvidia.com/gpu.count"] === "1"
-        );
-
-      console.log(ready.length);
-
       resolve(nodes);
     });
   });

@@ -11,12 +11,18 @@ function getKubeConfig() {
   return kc;
 }
 
-export async function getNodes(): Promise<k8s.V1Node[]> {
+export async function getNodes(label?: string): Promise<k8s.V1Node[]> {
   const kc = getKubeConfig();
 
   const client = kc.makeApiClient(k8s.CoreV1Api);
 
-  const response = await client.listNode();
+  const response = await client.listNode(
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    label
+  );
   return response.body.items;
 }
 
