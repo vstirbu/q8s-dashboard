@@ -101,7 +101,7 @@ export default function ClusterNodes() {
   return (
     <Card className="max-w-2xl">
       <CardHeader>
-        <CardTitle>Cluster nodes</CardTitle>
+        <CardTitle>Nodes</CardTitle>
       </CardHeader>
       <CardContent>
         <Suspense fallback={<NodeSkeleton />}>

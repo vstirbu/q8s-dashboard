@@ -12,7 +12,7 @@ export default async function UsersSummary() {
   return (
     <Card className="max-w-xs">
       <CardHeader>
-        <CardTitle>Cluster Users</CardTitle>
+        <CardTitle>Users</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col items-center justify-center gap-4 py-8">
         <div className="text-5xl font-bold">{users}</div>
