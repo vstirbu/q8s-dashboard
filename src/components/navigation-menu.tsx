@@ -1,24 +1,26 @@
 "use client";
 
 import Link from "next/link";
-import {
-  Footprints,
-  Home,
-  LineChart,
-  Package,
-  Settings,
-  ShoppingCart,
-  Users,
-} from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { FileStack, Footprints, Home, Settings } from "lucide-react";
 import { usePathname } from "next/navigation";
 
-const menuOptions = [
+type MenuOption = {
+  title: string;
+  icon: React.ElementType;
+  href: string;
+  selected?: boolean;
+};
+
+const menuOptions: MenuOption[] = [
   {
     title: "Dashboard",
     icon: Home,
     href: "/account/dashboard",
-    selected: true,
+  },
+  {
+    title: "Jobs",
+    icon: FileStack,
+    href: "/account/jobs",
   },
   {
     title: "Getting Started",

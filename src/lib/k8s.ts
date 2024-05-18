@@ -11,6 +11,38 @@ function getKubeConfig() {
   return kc;
 }
 
+export async function getJobs(id: string): Promise<k8s.V1Job[]> {
+  const kc = getKubeConfig();
+
+  const client = kc.makeApiClient(k8s.BatchV1Api);
+
+  const response = await client.listNamespacedJob(
+    "default",
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    [
+      `qubernetes.dev/user=sa-for-user-${id}`,
+      "qubernetes.dev/job=jupyter",
+    ].join(",")
+  );
+
+  return response.body.items;
+}
+
+export async function deleteJob(name: string) {
+  const kc = getKubeConfig();
+
+  const batchClient = kc.makeApiClient(k8s.BatchV1Api);
+
+  await batchClient.deleteNamespacedJob(name, "default");
+
+  const coreClient = kc.makeApiClient(k8s.CoreV1Api);
+
+  await coreClient.deleteNamespacedConfigMap(name, "default");
+}
+
 export async function getNodes(label?: string): Promise<k8s.V1Node[]> {
   const kc = getKubeConfig();
 
