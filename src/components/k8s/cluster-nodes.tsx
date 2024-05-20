@@ -56,7 +56,11 @@ async function NodesList() {
             <div className="grid gap-1">
               <p className="text-sm font-medium leading-none">
                 {node.metadata?.name}
-                {!ready && (
+                {ready ? (
+                  <Badge className="mx-2" variant="default">
+                    Ready
+                  </Badge>
+                ) : (
                   <Badge className="mx-2" variant="destructive">
                     Not Ready
                   </Badge>
