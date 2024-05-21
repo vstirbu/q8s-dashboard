@@ -24,7 +24,7 @@ export async function getJobs(id: string): Promise<k8s.V1Job[]> {
     undefined,
     [
       `qubernetes.dev/user=sa-for-user-${id}`,
-      "qubernetes.dev/job=jupyter",
+      "qubernetes.dev/job.type=jupyter",
     ].join(",")
   );
 
@@ -36,7 +36,18 @@ export async function deleteJob(name: string) {
 
   const batchClient = kc.makeApiClient(k8s.BatchV1Api);
 
-  await batchClient.deleteNamespacedJob(name, "default");
+  await batchClient.deleteNamespacedJob(
+    name,
+    "default",
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    {
+      propagationPolicy: "Foreground",
+    }
+  );
 
   const coreClient = kc.makeApiClient(k8s.CoreV1Api);
 
@@ -144,6 +155,10 @@ roleRef:
 }
 
 const serviceAccountName = (user: string) => `sa-for-user-${user}`;
+
+export function getUserForServiceAccount(sa: string) {
+  return sa.replace(/^sa-for-user-/, "");
+}
 
 export async function createServiceAccount(user: string) {
   const spec = `

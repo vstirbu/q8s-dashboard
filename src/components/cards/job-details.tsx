@@ -33,8 +33,6 @@ const getJobStatus = ({ status, spec }: k8s.V1Job) => {
 };
 
 export function JobDetails({ job }: { job: k8s.V1Job }) {
-  console.log(job);
-
   const status = getJobStatus(job);
 
   return (
@@ -53,7 +51,7 @@ export function JobDetails({ job }: { job: k8s.V1Job }) {
             size="icon"
             className="h-8 w-8 mr-8"
             variant="destructive"
-            disabled={status !== "Pending"}
+            // disabled={status !== "Pending"}
           >
             <Trash className="h-4 w-4" />
             <span className="sr-only">Delete</span>

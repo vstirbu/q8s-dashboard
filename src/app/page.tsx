@@ -1,11 +1,7 @@
 import Image from "next/image";
 import { redirect } from "next/navigation";
-import { Button } from "@/components/ui/button";
 import { auth } from "@/lib/auth";
 import { SignIn } from "@/components/signin-button";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import Link from "next/link";
 
 export default async function Home() {
   const session = await auth();
