@@ -58,7 +58,7 @@ function LineChart(
             data: props.data,
           },
         ]}
-        margin={{ top: 10, right: 10, bottom: 40, left: 40 }}
+        margin={{ top: 10, right: 20, bottom: 40, left: 40 }}
         xScale={{
           type: "point",
         }}
@@ -75,6 +75,20 @@ function LineChart(
           tickSize: 0,
           tickValues: 5,
           tickPadding: 16,
+        }}
+        enableArea={true}
+        enableGridX={false}
+        tooltip={({ point }) => {
+          return (
+            <div className="bg-gray-100 p-4 rounded-sm dark:bg-gray-500 shadow-sm">
+              <div className="text-sm text-gray-500 dark:text-gray-300">
+                {point.data.xFormatted}
+              </div>
+              <div className="text-md font-semibold dark:text-gray-200">
+                {point.data.yFormatted} jobs
+              </div>
+            </div>
+          );
         }}
         colors={["#2563eb", "#e11d48"]}
         pointSize={6}
