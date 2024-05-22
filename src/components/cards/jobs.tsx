@@ -31,7 +31,7 @@ export default function JobsList({ jobs }: { jobs: k8s.V1Job[] }) {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>Running Jobs</CardTitle>
+        <CardTitle>Active Jobs</CardTitle>
         <CardDescription>
           The active jobs that you execute in the Jupyter notebook.
         </CardDescription>
