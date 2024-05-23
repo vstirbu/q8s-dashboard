@@ -24,7 +24,7 @@ export async function getJobs(id: string): Promise<k8s.V1Job[]> {
     undefined,
     [
       `qubernetes.dev/user=sa-for-user-${id}`,
-      "qubernetes.dev/job.type=jupyter",
+      // "qubernetes.dev/job.type=jupyter",
     ].join(",")
   );
 
