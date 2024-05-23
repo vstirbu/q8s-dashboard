@@ -107,7 +107,10 @@ function LineChart(
           },
           grid: {
             line: {
-              stroke: "#f3f4f6",
+              // stroke: "#f3f4f6",
+              stroke: "#666666",
+              // strokeDasharray: "4 4",
+              strokeWidth: 0.5,
             },
           },
         }}
