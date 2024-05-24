@@ -3,10 +3,10 @@ import { auth } from "@/lib/auth";
 import GettingStarted, {
   // @ts-ignore
   frontmatter,
-} from "@/app/account/getting-started/getting-started-docker.mdx";
+} from "@/app/docs/getting-started/getting-started-docker.mdx";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
-export default async function Dashboard() {
+export default async function GettingStartedPage() {
   const session = await auth();
   const user = session?.user;
 
@@ -27,7 +27,7 @@ export default async function Dashboard() {
             </ScrollArea>
             <div className="flex flex-col p-4"></div>
           </div> */}
-      <ScrollArea className="h-[600px] w-full rounded-md border p-4">
+      <ScrollArea className="h-[650px] w-full rounded-md border p-4">
         <div className="mx-auto max-w-3xl px-4 md:px-6 lg:px-8">
           <div className="space-y-6 prose prose-md dark:prose-invert">
             <GettingStarted />

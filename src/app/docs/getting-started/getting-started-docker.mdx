@@ -67,7 +67,7 @@ Notebook magic commands are not supported:
 
 ### Dependencies
 
-The container image used to run the circuits in the cluster is currently hardcoded with the following dependencies:
+The default container image used to run the circuits in the cluster is currently hardcoded with the following dependencies:
 
 ```
 qiskit==1.0.0
@@ -76,4 +76,22 @@ qiskit_algorithms
 qiskit_ibm_runtime
 numpy
 networkx
+```
+
+You can provide a custom container image by passing it to the `DOCKER_IMAGE` environment variable:
+
+```sh
+docker run -p 8888:8888 \
+  -e DOCKER_IMAGE="your-custom-image"
+  -v /path/to/config:/home/jupyter/.kube/config  \
+  -v /path/to/workspace:/workspace \
+  --pull always \
+  ghcr.io/torqs-project/q8s-devenv:main
+```
+
+You can create the custom image using `vstirbu/benchmark-deps` as base image. The base image contains already contains the CUDA dependencies for this cluster:
+
+```Dockerfile
+FROM vstirbu/benchmark-deps
+...
 ```

@@ -27,18 +27,32 @@ export function UserDropdownMenu(props: { user: Session["user"] }) {
           <span className="sr-only">Toggle user menu</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem asChild>
-          <Link href="/account/settings">Settings</Link>
-        </DropdownMenuItem>
-        {/* <DropdownMenuItem>Support</DropdownMenuItem> */}
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <SignOut />
-        </DropdownMenuItem>
-      </DropdownMenuContent>
+      {props.user ? (
+        <DropdownMenuContent align="end">
+          <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem asChild>
+            <Link href="/account/dashboard">Dashboard</Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link href="/account/settings">Settings</Link>
+          </DropdownMenuItem>
+          {/* <DropdownMenuItem>Support</DropdownMenuItem> */}
+          <DropdownMenuSeparator />
+          <DropdownMenuItem>
+            <SignOut />
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      ) : (
+        <DropdownMenuContent align="end">
+          <DropdownMenuItem>
+            <Link href="/">Sign in</Link>
+          </DropdownMenuItem>
+          {/* <DropdownMenuItem>
+            <Link href="/auth/signup">Sign up</Link>
+          </DropdownMenuItem> */}
+        </DropdownMenuContent>
+      )}
     </DropdownMenu>
   );
 }

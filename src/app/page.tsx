@@ -2,6 +2,7 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { SignIn } from "@/components/signin-button";
+import Link from "next/link";
 
 export default async function Home() {
   const session = await auth();
@@ -58,6 +59,12 @@ export default async function Home() {
                 Sign up
               </Link>
             </div> */}
+            <div className="mt-10 text-center text-sm">
+              Don&apos;t know why?{" "}
+              <Link href="/docs" className="underline">
+                Read the docs
+              </Link>
+            </div>
           </div>
         </div>
         <div className="hidden bg-muted lg:block">

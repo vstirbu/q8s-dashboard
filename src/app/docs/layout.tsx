@@ -1,14 +1,12 @@
 import Link from "next/link";
 import {
   Bell,
-  FileStack,
   Home,
   LineChart,
   Menu,
   Package,
   Package2,
   Rotate3D,
-  Settings,
   ShoppingCart,
   Users,
 } from "lucide-react";
@@ -18,30 +16,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import ThemeToggle from "@/components/theme-toggle";
-import { MenuOption, NavigationMenu } from "@/components/navigation-menu";
-import { UserDropdownMenu } from "@/components/user-dropdown-menu";
-
-const menuOptions: MenuOption[] = [
-  {
-    title: "Dashboard",
-    icon: Home,
-    href: "/account/dashboard",
-  },
-  {
-    title: "Jobs",
-    icon: FileStack,
-    href: "/account/jobs",
-  },
-  // {
-  //   title: "Getting Started",
-  //   icon: Footprints,
-  //   href: "/account/getting-started",
-  // },
-  { title: "Settings", icon: Settings, href: "/account/settings" },
-  // { title: "Orders", icon: ShoppingCart, href: "#" },
-  // { title: "Products", icon: Package, href: "#" },
-  // { title: "Analytics", icon: LineChart, href: "#" },
-];
+import { NavigationMenu } from "../../components/navigation-menu";
+import { UserDropdownMenu } from "../../components/user-dropdown-menu";
 
 export default async function Dashboard({
   children,
@@ -57,24 +33,15 @@ export default async function Dashboard({
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
             <Link
-              href="/account/dashboard"
+              href="/docs"
               className="flex items-center gap-2 font-semibold"
             >
               <Rotate3D className="h-6 w-6" />
-              <span className="">Qubernetes</span>
+              <span className="">Qubernetes Docs</span>
             </Link>
-            <Button
-              variant="outline"
-              size="icon"
-              className="ml-auto h-8 w-8"
-              disabled
-            >
-              <Bell className="h-4 w-4" />
-              <span className="sr-only">Toggle notifications</span>
-            </Button>
           </div>
           <div className="flex-1">
-            <NavigationMenu section="account" />
+            <NavigationMenu section="docs" />
           </div>
           {/* <div className="mt-auto p-4">
             <Card x-chunk="dashboard-02-chunk-0">
@@ -194,9 +161,6 @@ export default async function Dashboard({
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu> */}
-          <Link href="/docs" className="text-gray-500 hover:text-gray-900">
-            Docs
-          </Link>
           <ThemeToggle />
           <UserDropdownMenu user={user} />
         </header>

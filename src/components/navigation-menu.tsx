@@ -4,39 +4,49 @@ import Link from "next/link";
 import { FileStack, Footprints, Home, Settings } from "lucide-react";
 import { usePathname } from "next/navigation";
 
-type MenuOption = {
+export type MenuOption = {
   title: string;
   icon: React.ElementType;
   href: string;
   selected?: boolean;
 };
 
-const menuOptions: MenuOption[] = [
-  {
-    title: "Dashboard",
-    icon: Home,
-    href: "/account/dashboard",
-  },
-  {
-    title: "Jobs",
-    icon: FileStack,
-    href: "/account/jobs",
-  },
-  {
-    title: "Getting Started",
-    icon: Footprints,
-    href: "/account/getting-started",
-  },
-  { title: "Settings", icon: Settings, href: "/account/settings" },
-  // { title: "Orders", icon: ShoppingCart, href: "#" },
-  // { title: "Products", icon: Package, href: "#" },
-  // { title: "Analytics", icon: LineChart, href: "#" },
-];
+const menuOptions: Record<string, MenuOption[]> = {
+  account: [
+    {
+      title: "Dashboard",
+      icon: Home,
+      href: "/account/dashboard",
+    },
+    {
+      title: "Jobs",
+      icon: FileStack,
+      href: "/account/jobs",
+    },
+    { title: "Settings", icon: Settings, href: "/account/settings" },
+    // { title: "Orders", icon: ShoppingCart, href: "#" },
+    // { title: "Products", icon: Package, href: "#" },
+    // { title: "Analytics", icon: LineChart, href: "#" },
+  ],
+  docs: [
+    {
+      title: "Getting Started",
+      icon: Footprints,
+      href: "/docs/getting-started",
+    },
+  ],
+};
 
-export function NavigationMenu() {
+type keysOf<T> = T extends Record<infer K, any> ? K : never;
+
+export function NavigationMenu({
+  section,
+}: {
+  section: keysOf<typeof menuOptions>;
+}) {
   const pathname = usePathname();
 
-  menuOptions.map((option) => {
+  menuOptions[section].map((option) => {
     if (option.href === pathname) {
       option.selected = true;
     } else {
@@ -46,7 +56,7 @@ export function NavigationMenu() {
 
   return (
     <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-      {menuOptions.map((option) => (
+      {menuOptions[section].map((option) => (
         <Link
           href={option.href}
           className={
