@@ -2,21 +2,23 @@ export async function POST(req: Request) {
   const body = await req.json();
 
   const {
-    uuid,
+    uid,
     userInfo: { username },
   } = body.request;
+
+  const value = username.split(":").slice(-1);
 
   return Response.json({
     apiVersion: "admission.k8s.io/v1",
     kind: "AdmissionReview",
     response: {
-      uid: body.request.uid,
+      uid,
       allowed: true,
       patch: Buffer.from(
         JSON.stringify({
           op: "add",
-          path: 'metadata.labels."qubernetes.dev/user"',
-          value: username.split(":").slice(-1),
+          path: "metadata.labels.qubernetes.dev~1user",
+          value,
         })
       ).toString("base64"),
       patchType: "JSONPatch",
