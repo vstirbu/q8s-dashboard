@@ -8,8 +8,6 @@ export async function POST(req: Request) {
 
   const value = username.split(":").slice(-1);
 
-  console.log("username", value);
-
   const patch = [
     {
       op: "add",
