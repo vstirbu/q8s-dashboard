@@ -1,7 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { FileStack, Footprints, Home, Settings } from "lucide-react";
+import {
+  Construction,
+  FileStack,
+  FlaskConical,
+  Footprints,
+  Home,
+  Settings,
+} from "lucide-react";
 import { usePathname } from "next/navigation";
 
 export type MenuOption = {
@@ -30,9 +37,19 @@ const menuOptions: Record<string, MenuOption[]> = {
   ],
   docs: [
     {
-      title: "Getting Started",
+      title: "Getting started",
       icon: Footprints,
       href: "/docs/getting-started",
+    },
+    {
+      title: "Custom images",
+      icon: FlaskConical,
+      href: "/docs/custom-images",
+    },
+    {
+      title: "Limitations",
+      icon: Construction,
+      href: "/docs/limitations",
     },
   ],
 };
