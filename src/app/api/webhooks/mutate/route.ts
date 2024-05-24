@@ -15,7 +15,7 @@ export async function POST(req: Request) {
       patch: Buffer.from(
         JSON.stringify({
           op: "add",
-          path: "metadata/labels/qubernetes.dev/user",
+          path: 'metadata.labels."qubernetes.dev/user"',
           value: username.split(":").slice(-1),
         })
       ).toString("base64"),
