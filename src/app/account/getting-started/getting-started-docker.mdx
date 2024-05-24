@@ -22,6 +22,7 @@ Replace `/path/to/config` and `/path/to/workspace` to your configuration. Start 
 docker run -p 8888:8888 \
   -v /path/to/config:/home/jupyter/.kube/config  \
   -v /path/to/workspace:/workspace \
+  --pull always \
   ghcr.io/torqs-project/q8s-devenv:main
 ```
 

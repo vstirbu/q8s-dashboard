@@ -1,6 +1,7 @@
 "use client";
 
 import { ThemeProvider } from "@/components/theme-provider";
+import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
 
 // https://vercel.com/guides/react-context-state-management-nextjs#rendering-third-party-context-providers-in-server-components
 export function Providers({
@@ -14,6 +15,16 @@ export function Providers({
       disableTransitionOnChange
     >
       {children}
+      <ProgressBar
+        // color="#29D"
+        color="#666"
+        // startPosition={0.3}
+        height="4px"
+        options={{
+          showSpinner: false,
+        }}
+        shallowRouting
+      />
     </ThemeProvider>
   );
 }
