@@ -8,6 +8,8 @@ export async function POST(req: Request) {
 
   const value = username.split(":").slice(-1);
 
+  console.log("username", value);
+
   return Response.json({
     apiVersion: "admission.k8s.io/v1",
     kind: "AdmissionReview",
@@ -17,7 +19,8 @@ export async function POST(req: Request) {
       patch: [
         JSON.stringify({
           op: "add",
-          path: "metadata.labels.qubernetes.dev~1user",
+          //   path: "metadata.labels.qubernetes.dev~1user",
+          path: 'metadata/labels/"qubernetes.dev/user"',
           value,
         }),
       ],
