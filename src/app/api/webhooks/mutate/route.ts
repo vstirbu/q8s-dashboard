@@ -17,15 +17,15 @@ export async function POST(req: Request) {
       uid,
       allowed: true,
       patch: [
-        JSON.stringify({
-          op: "add",
-          //   path: "metadata.labels.qubernetes.dev~1user",
-          path: 'metadata/labels/"qubernetes.dev/user"',
-          value,
-        }),
+        Buffer.from(
+          JSON.stringify({
+            op: "add",
+            //   path: "metadata.labels.qubernetes.dev~1user",
+            path: 'metadata/labels/"qubernetes.dev/user"',
+            value,
+          })
+        ).toString("base64"),
       ],
-      //   Buffer.from(
-      //   ).toString("base64"),
       patchType: "JSONPatch",
     },
   });
