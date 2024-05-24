@@ -11,9 +11,8 @@ export default function Docs() {
                 Get Started with Qubernetes
               </h1>
               <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-                Unlock the power of Qubernetes platform and run large quantum
-                circuits experiments on remote clusters. Follow these simple
-                steps to get up and running.
+                Run quantum circuits experiments on Kubernetes. Follow these
+                simple steps to get up and running.
               </p>
             </div>
             <div className="space-x-4">

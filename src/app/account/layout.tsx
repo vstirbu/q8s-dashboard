@@ -20,6 +20,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import ThemeToggle from "@/components/theme-toggle";
 import { MenuOption, NavigationMenu } from "@/components/navigation-menu";
 import { UserDropdownMenu } from "@/components/user-dropdown-menu";
+import { redirect } from "next/navigation";
 
 const menuOptions: MenuOption[] = [
   {
@@ -49,7 +50,12 @@ export default async function Dashboard({
   children: React.ReactNode;
 }>) {
   const session = await auth();
-  const user = session?.user;
+
+  if (!session) {
+    redirect("/");
+  }
+
+  const user = session.user;
 
   return (
     <main className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
