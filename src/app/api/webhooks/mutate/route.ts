@@ -22,6 +22,7 @@ export async function POST(req: Request) {
   return Response.json({
     apiVersion: "admission.k8s.io/v1",
     kind: "AdmissionReview",
+    request: body.request,
     response: {
       uid,
       allowed: true,
