@@ -1,9 +1,10 @@
+"use server";
+
 import { getSecret } from "@/lib/k8s";
 import { auth } from "@/lib/auth";
+import { track } from "@vercel/analytics/server";
 
 export async function downloadConfig(): Promise<string | undefined> {
-  "use server";
-
   const session = await auth();
   const user = session?.user;
 
@@ -35,6 +36,10 @@ contexts:
       namespace: default
 current-context: default
 `;
+
+  await track("downloaded-k8s-config", {
+    user: user.id!,
+  });
 
   return config;
 }
