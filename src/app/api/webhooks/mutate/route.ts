@@ -14,13 +14,15 @@ export async function POST(req: Request) {
     response: {
       uid,
       allowed: true,
-      patch: Buffer.from(
+      patch: [
         JSON.stringify({
           op: "add",
           path: "metadata.labels.qubernetes.dev~1user",
           value,
-        })
-      ).toString("base64"),
+        }),
+      ],
+      //   Buffer.from(
+      //   ).toString("base64"),
       patchType: "JSONPatch",
     },
   });
