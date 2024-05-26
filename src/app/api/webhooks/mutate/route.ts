@@ -13,7 +13,6 @@ export async function POST(req: Request) {
   const patch = [
     {
       op: "add",
-      //   path: "metadata.labels.qubernetes.dev~1user",
       path: 'metadata.labels["qubernetes.dev/user"]',
       value,
     },
