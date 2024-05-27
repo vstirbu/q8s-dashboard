@@ -32,10 +32,17 @@ export default async function Jobs() {
     return acc;
   }, arrayOfSevenDaysBeforeToday());
 
-  const transformed = Object.keys(data).map((key) => ({
-    x: key,
-    y: data[key],
-  }));
+  const transformed = Object.keys(data)
+    .map((key) => ({
+      x: key,
+      y: data[key],
+    }))
+    .sort((a, b) => {
+      const dateA = new Date(a.x);
+      const dateB = new Date(b.x);
+
+      return dateA.getTime() - dateB.getTime();
+    });
 
   return (
     <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
