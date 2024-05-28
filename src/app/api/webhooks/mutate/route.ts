@@ -12,32 +12,17 @@ export async function POST(req: Request) {
 
   const value = username.split(":").slice(-1)[0];
 
-  console.log(`Setting user label to ${value}`);
-  console.log(JSON.stringify(body.request.object.metadata.labels, null, 2));
-
   const patch = [];
 
   if (!body.request.object.metadata.labels) {
-    console.log("No labels found, adding labels");
-
     patch.push({
       op: "add",
-      path: "metadata.labels",
+      path: "/metadata/labels",
       value: {
         "qubernetes.dev/user": value,
       },
     });
-  } else if (!body.request.object.metadata.labels["qubernetes.dev/user"]) {
-    console.log("No user label found, adding user label");
-
-    patch.push({
-      op: "add",
-      path: 'metadata.labels["qubernetes.dev/user"]',
-      value,
-    });
   } else {
-    console.log("User label found, updating user label");
-
     patch.push({
       op: "replace",
       path: "/metadata/labels",
@@ -47,8 +32,6 @@ export async function POST(req: Request) {
       },
     });
   }
-
-  console.log(JSON.stringify(patch, null, 2));
 
   return Response.json({
     apiVersion: "admission.k8s.io/v1",
