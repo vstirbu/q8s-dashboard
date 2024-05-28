@@ -8,7 +8,7 @@ export async function POST(req: Request) {
     userInfo: { username },
   } = body.request;
 
-  //   console.log(JSON.stringify(body.request.object.metadata.labels["qubernetes.dev/user"], null, 2));
+  console.log(body.request.object.metadata.labels["qubernetes.dev/user"]);
 
   const value = username.split(":").slice(-1);
 
