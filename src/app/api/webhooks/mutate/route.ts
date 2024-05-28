@@ -10,7 +10,7 @@ export async function POST(req: Request) {
 
   //   console.log(body.request.object.metadata.labels["qubernetes.dev/user"]);
 
-  const value = username.split(":").slice(-1);
+  const value = username.split(":").slice(-1)[0];
 
   console.log(`Setting user label to ${value}`);
 
@@ -22,13 +22,9 @@ export async function POST(req: Request) {
     patch.push({
       op: "add",
       path: "metadata.labels",
-      value: {},
-    });
-
-    patch.push({
-      op: "add",
-      path: 'metadata.labels["qubernetes.dev/user"]',
-      value,
+      value: {
+        "qubernetes.dev/user": value,
+      },
     });
   } else if (!body.request.object.metadata.labels["qubernetes.dev/user"]) {
     console.log("No user label found, adding user label");
