@@ -12,13 +12,17 @@ export async function POST(req: Request) {
 
   const value = username.split(":").slice(-1);
 
+  console.log(`Setting user label to ${value}`);
+
   let op = "add";
 
   try {
     if (body.request.object.metadata.labels["qubernetes.dev/user"]) {
       op = "replace";
     }
-  } catch (e) {}
+  } catch (e) {
+    console.log("Job does not have user label");
+  }
 
   const patch = [
     {
@@ -28,7 +32,7 @@ export async function POST(req: Request) {
     },
   ];
 
-  console.log(JSON.stringify(patch, null, 2));
+  //   console.log(JSON.stringify(patch, null, 2));
 
   return Response.json({
     apiVersion: "admission.k8s.io/v1",
