@@ -12,11 +12,17 @@ export async function POST(req: Request) {
 
   const value = username.split(":").slice(-1);
 
+  let op = "add";
+
+  try {
+    if (body.request.object.metadata.labels["qubernetes.dev/user"]) {
+      op = "replace";
+    }
+  } catch (e) {}
+
   const patch = [
     {
-      op: body.request.object.metadata.labels["qubernetes.dev/user"]
-        ? "replace"
-        : "add",
+      op,
       path: 'metadata.labels["qubernetes.dev/user"]',
       value,
     },
