@@ -24,17 +24,31 @@ export async function POST(req: Request) {
         value: {},
       },
     ]);
-  }
 
-  patch.push([
-    {
-      op: body.request.object.metadata.labels["qubernetes.dev/user"]
-        ? "replace"
-        : "add",
-      path: 'metadata.labels["qubernetes.dev/user"]',
-      value,
-    },
-  ]);
+    patch.push([
+      {
+        op: "add",
+        path: 'metadata.labels["qubernetes.dev/user"]',
+        value,
+      },
+    ]);
+  } else if (!body.request.object.metadata.labels["qubernetes.dev/user"]) {
+    patch.push([
+      {
+        op: "add",
+        path: 'metadata.labels["qubernetes.dev/user"]',
+        value,
+      },
+    ]);
+  } else {
+    patch.push([
+      {
+        op: "replace",
+        path: 'metadata.labels["qubernetes.dev/user"]',
+        value,
+      },
+    ]);
+  }
 
   //   console.log(JSON.stringify(patch, null, 2));
 
