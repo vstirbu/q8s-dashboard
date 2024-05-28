@@ -8,7 +8,7 @@ export async function POST(req: Request) {
     userInfo: { username },
   } = body.request;
 
-  console.log(body.request.object.metadata.labels["qubernetes.dev/user"]);
+  //   console.log(body.request.object.metadata.labels["qubernetes.dev/user"]);
 
   const value = username.split(":").slice(-1);
 
@@ -21,6 +21,8 @@ export async function POST(req: Request) {
       value,
     },
   ];
+
+  console.log(JSON.stringify(patch, null, 2));
 
   return Response.json({
     apiVersion: "admission.k8s.io/v1",
