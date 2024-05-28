@@ -13,6 +13,7 @@ export async function POST(req: Request) {
   const value = username.split(":").slice(-1)[0];
 
   console.log(`Setting user label to ${value}`);
+  console.log(JSON.stringify(body.request.object.metadata.labels, null, 2));
 
   const patch = [];
 
