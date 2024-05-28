@@ -8,13 +8,15 @@ export async function POST(req: Request) {
     userInfo: { username },
   } = body.request;
 
-  console.log(JSON.stringify(body.request, null, 2));
+  //   console.log(JSON.stringify(body.request.object.metadata.labels["qubernetes.dev/user"], null, 2));
 
   const value = username.split(":").slice(-1);
 
   const patch = [
     {
-      op: "add",
+      op: body.request.object.metadata.labels["qubernetes.dev/user"]
+        ? "replace"
+        : "add",
       path: 'metadata.labels["qubernetes.dev/user"]',
       value,
     },
