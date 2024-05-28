@@ -40,8 +40,11 @@ export async function POST(req: Request) {
 
     patch.push({
       op: "replace",
-      path: 'metadata.labels["qubernetes.dev/user"]',
-      value,
+      path: "/metadata/labels",
+      value: {
+        ...body.request.object.metadata.labels,
+        "qubernetes.dev/user": value,
+      },
     });
   }
 
