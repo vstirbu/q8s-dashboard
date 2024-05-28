@@ -50,7 +50,7 @@ export async function POST(req: Request) {
     ]);
   }
 
-  //   console.log(JSON.stringify(patch, null, 2));
+  console.log(JSON.stringify(patch, null, 2));
 
   return Response.json({
     apiVersion: "admission.k8s.io/v1",
