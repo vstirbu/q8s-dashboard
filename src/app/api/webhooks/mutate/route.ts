@@ -17,9 +17,11 @@ export async function POST(req: Request) {
   const patch = [];
 
   if (!body.request.object.metadata.labels) {
+    console.log("No labels found, adding labels");
+
     patch.push({
       op: "add",
-      path: "/metadata/labels",
+      path: "metadata.labels",
       value: {},
     });
 
@@ -29,12 +31,16 @@ export async function POST(req: Request) {
       value,
     });
   } else if (!body.request.object.metadata.labels["qubernetes.dev/user"]) {
+    console.log("No user label found, adding user label");
+
     patch.push({
       op: "add",
       path: 'metadata.labels["qubernetes.dev/user"]',
       value,
     });
   } else {
+    console.log("User label found, updating user label");
+
     patch.push({
       op: "replace",
       path: 'metadata.labels["qubernetes.dev/user"]',
