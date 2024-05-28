@@ -17,37 +17,29 @@ export async function POST(req: Request) {
   const patch = [];
 
   if (!body.request.object.metadata.labels) {
-    patch.push([
-      {
-        op: "add",
-        path: "/metadata/labels",
-        value: {},
-      },
-    ]);
+    patch.push({
+      op: "add",
+      path: "/metadata/labels",
+      value: {},
+    });
 
-    patch.push([
-      {
-        op: "add",
-        path: 'metadata.labels["qubernetes.dev/user"]',
-        value,
-      },
-    ]);
+    patch.push({
+      op: "add",
+      path: 'metadata.labels["qubernetes.dev/user"]',
+      value,
+    });
   } else if (!body.request.object.metadata.labels["qubernetes.dev/user"]) {
-    patch.push([
-      {
-        op: "add",
-        path: 'metadata.labels["qubernetes.dev/user"]',
-        value,
-      },
-    ]);
+    patch.push({
+      op: "add",
+      path: 'metadata.labels["qubernetes.dev/user"]',
+      value,
+    });
   } else {
-    patch.push([
-      {
-        op: "replace",
-        path: 'metadata.labels["qubernetes.dev/user"]',
-        value,
-      },
-    ]);
+    patch.push({
+      op: "replace",
+      path: 'metadata.labels["qubernetes.dev/user"]',
+      value,
+    });
   }
 
   console.log(JSON.stringify(patch, null, 2));
