@@ -14,23 +14,27 @@ export async function POST(req: Request) {
 
   console.log(`Setting user label to ${value}`);
 
-  let op = "add";
+  const patch = [];
 
-  try {
-    if (body.request.object.metadata.labels["qubernetes.dev/user"]) {
-      op = "replace";
-    }
-  } catch (e) {
-    console.log("Job does not have user label");
+  if (!body.request.object.metadata.labels) {
+    patch.push([
+      {
+        op: "add",
+        path: "/metadata/labels",
+        value: {},
+      },
+    ]);
   }
 
-  const patch = [
+  patch.push([
     {
-      op,
+      op: body.request.object.metadata.labels["qubernetes.dev/user"]
+        ? "replace"
+        : "add",
       path: 'metadata.labels["qubernetes.dev/user"]',
       value,
     },
-  ];
+  ]);
 
   //   console.log(JSON.stringify(patch, null, 2));
 
