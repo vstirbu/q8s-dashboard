@@ -1,6 +1,9 @@
 import { auth } from "@/lib/auth";
 import prisma from "@/lib/db";
 
+// export const dynamic = "force-dynamic";
+// export const revalidate = 60 * 60 * 6;
+
 export async function GET() {
   const session = await auth();
 

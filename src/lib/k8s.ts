@@ -49,9 +49,13 @@ export async function deleteJob(name: string) {
     }
   );
 
-  const coreClient = kc.makeApiClient(k8s.CoreV1Api);
+  try {
+    const coreClient = kc.makeApiClient(k8s.CoreV1Api);
 
-  await coreClient.deleteNamespacedConfigMap(name, "default");
+    await coreClient.deleteNamespacedConfigMap(name, "default");
+  } catch (e) {
+    console.log("Job does not have a config map to delete");
+  }
 }
 
 export async function getNodes(label?: string): Promise<k8s.V1Node[]> {

@@ -5,10 +5,8 @@ import {
   CardFooter,
   Card,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import { DownloadButton } from "../DownloadButton";
-import { downloadConfig } from "@/actions/kubernetes";
 
 export default function KubernetesConfig(props: { className?: string }) {
   return (
@@ -24,7 +22,7 @@ export default function KubernetesConfig(props: { className?: string }) {
         </CardDescription>
       </CardHeader>
       <CardFooter className="flex justify-end">
-        <DownloadButton downloadConfig={downloadConfig} />
+        <DownloadButton />
       </CardFooter>
     </Card>
   );

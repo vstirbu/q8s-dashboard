@@ -200,7 +200,11 @@ export default async function Dashboard({
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu> */}
-          <Link href="/docs" className="text-gray-500 hover:text-gray-900">
+          <Link
+            href="https://www.qubernetes.dev/"
+            target="_blank"
+            className="text-gray-500 hover:text-gray-900"
+          >
             Docs
           </Link>
           <ThemeToggle />

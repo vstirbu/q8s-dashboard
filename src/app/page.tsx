@@ -61,7 +61,11 @@ export default async function Home() {
             </div> */}
             <div className="mt-10 text-center text-sm">
               Don&apos;t know why?{" "}
-              <Link href="/docs" className="underline">
+              <Link
+                href="https://www.qubernetes.dev/"
+                target="_blank"
+                className="underline"
+              >
                 Read the docs
               </Link>
             </div>

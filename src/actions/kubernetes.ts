@@ -1,7 +1,6 @@
 "use server";
 
 import { getSecret } from "@/lib/k8s";
-import { auth } from "@/lib/auth";
 import { track } from "@vercel/analytics/server";
 import { protectedAction } from "./trpc";
 

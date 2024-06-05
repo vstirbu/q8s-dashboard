@@ -1,12 +1,11 @@
 "use client";
 
+import { downloadConfig } from "@/actions/kubernetes";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import { useState } from "react";
 
-export function DownloadButton(props: {
-  downloadConfig: () => Promise<string | undefined>;
-}) {
+export function DownloadButton() {
   const [pending, setPending] = useState(false);
 
   return (
@@ -17,7 +16,7 @@ export function DownloadButton(props: {
       disabled={pending}
       onClick={async () => {
         setPending(true);
-        const config = await props.downloadConfig();
+        const config = await downloadConfig();
 
         if (typeof config === "string") {
           const blob = new Blob([config], { type: "text/yaml" });
