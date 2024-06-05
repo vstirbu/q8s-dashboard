@@ -60,7 +60,7 @@ export function Secrets() {
               Created on April 15, 2023
             </p>
           </div>
-          <DownloadButton downloadConfig={downloadConfig} />
+          <DownloadButton />
           <Dialog>
             <DialogTrigger asChild>
               <Button size="sm" variant="destructive">
