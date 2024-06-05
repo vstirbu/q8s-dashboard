@@ -1,5 +1,5 @@
 import TimeAgo from "@/components/time-ago";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getNodes } from "@/lib/k8s";
 import { Cpu, Laptop, Server } from "lucide-react";
@@ -18,6 +18,7 @@ async function NodesList() {
     getNodes().then(async (nodes) => {
       await sleep(1000);
       clearTimeout(timeout);
+
       resolve(nodes);
     });
   });
@@ -28,6 +29,9 @@ async function NodesList() {
         const ready = node.status?.conditions?.some(
           (c) => c.type === "Ready" && c.reason === "KubeletReady"
         );
+
+        const isGpuNode =
+          node.status?.capacity?.["nvidia.com/gpu"] !== undefined;
 
         return (
           <div
@@ -57,14 +61,31 @@ async function NodesList() {
               <p className="text-sm font-medium leading-none">
                 {node.metadata?.name}
                 {ready ? (
-                  <Badge className="mx-2" variant="default">
-                    Ready
+                  <Badge
+                    className="mx-2  bg-green-700 hover:bg-green-600 text-white"
+                    variant="default"
+                  >
+                    ready
                   </Badge>
                 ) : (
                   <Badge className="mx-2" variant="destructive">
-                    Not Ready
+                    down
                   </Badge>
                 )}
+                {isGpuNode ? (
+                  node.status?.allocatable?.["nvidia.com/gpu"] === "0" ? (
+                    <Badge className="mx-2" variant="destructive">
+                      busy
+                    </Badge>
+                  ) : (
+                    <Badge
+                      className="mx-2 bg-green-700 hover:bg-green-600 text-white"
+                      variant="default"
+                    >
+                      available
+                    </Badge>
+                  )
+                ) : null}
               </p>
               <div className="flex items-center gap-1">
                 <Cpu className="h-4 w-4" />

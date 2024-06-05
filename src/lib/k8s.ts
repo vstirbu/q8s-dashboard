@@ -70,6 +70,7 @@ export async function getNodes(label?: string): Promise<k8s.V1Node[]> {
     undefined,
     label
   );
+
   return response.body.items;
 }
 
