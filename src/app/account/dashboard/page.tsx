@@ -2,6 +2,7 @@ import { auth } from "@/lib/auth";
 
 import ClusterNodes from "@/components/k8s/cluster-nodes";
 import UsersSummary from "@/components/k8s/cluster-users";
+import { JobsCalendar } from "@/components/k8s/cluster-usage";
 
 export default async function Dashboard() {
   const session = await auth();
@@ -16,6 +17,7 @@ export default async function Dashboard() {
         <UsersSummary />
         <ClusterNodes />
       </div>
+      <JobsCalendar />
       {/* <div
             className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm"
             x-chunk="dashboard-02-chunk-1"

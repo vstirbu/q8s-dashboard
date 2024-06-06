@@ -13,7 +13,7 @@ export default function UsersSummary() {
   const { data: { total, users } = {}, isLoading } = useSWR<{
     total: number;
     users: number;
-  }>("/api/user/123", async () =>
+  }>("/api/stats/weekly", async () =>
     fetch("/api/stats/weekly").then((res) => res.json())
   );
 
