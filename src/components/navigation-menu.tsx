@@ -17,6 +17,7 @@ export type MenuOption = {
   icon: React.ElementType;
   href: string;
   selected?: boolean;
+  target?: string;
 };
 
 const menuOptions: Record<string, MenuOption[]> = {
@@ -38,6 +39,12 @@ const menuOptions: Record<string, MenuOption[]> = {
       title: "My account",
       icon: User,
       href: "/account",
+    },
+    {
+      title: "Getting started",
+      icon: Footprints,
+      href: "https://www.qubernetes.dev/jupyter/getting-started",
+      target: "_blank",
     },
   ],
 };
@@ -63,6 +70,7 @@ export function NavigationMenu({
     <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
       {menuOptions[section].map((option) => (
         <Link
+          target={option.target || "_self"}
           href={option.href}
           className={
             option.selected
