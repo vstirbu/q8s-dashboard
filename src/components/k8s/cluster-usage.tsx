@@ -49,8 +49,10 @@ export function JobsCalendar() {
           margin={{ top: 0, right: 0, bottom: 0, left: 40 }}
           yearSpacing={40}
           monthBorderColor={isDark ? "#444" : "#fff"}
-          dayBorderWidth={2}
-          dayBorderColor={isDark ? "#333" : "#fff"}
+          dayBorderWidth={1}
+          dayBorderColor={isDark ? "#333" : "#ddd"}
+          monthSpacing={1}
+          daySpacing={0}
           theme={{
             text: {
               fontSize: 13,
