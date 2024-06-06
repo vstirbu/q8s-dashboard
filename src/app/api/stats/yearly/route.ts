@@ -41,8 +41,6 @@ export async function GET() {
     return acc;
   }, {} as Record<string, number>);
 
-  console.log(jobsByDate);
-
   const data = Object.keys(jobsByDate)
     .map((key) => ({
       day: key,

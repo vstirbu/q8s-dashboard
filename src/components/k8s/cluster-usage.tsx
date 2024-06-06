@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useTheme } from "next-themes";
 
 // make sure parent container have a defined height when using
 // responsive component, otherwise height will be 0 and
@@ -28,6 +29,10 @@ export function JobsCalendar() {
     fetch("/api/stats/yearly").then((res) => res.json())
   );
 
+  const { resolvedTheme: theme } = useTheme();
+
+  const isDark = theme === "dark";
+
   return (
     <Card>
       <CardHeader>
@@ -39,13 +44,24 @@ export function JobsCalendar() {
           data={data}
           from={`${today.getFullYear()}-01-01`}
           to={`${today.getFullYear()}-12-31`}
-          emptyColor="#eeeeee"
+          emptyColor={isDark ? "#222" : "#eeeeee"}
           colors={["#61cdbb", "#97e3d5", "#e8c1a0", "#f47560"]}
           margin={{ top: 0, right: 0, bottom: 0, left: 40 }}
           yearSpacing={40}
-          monthBorderColor="#ffffff"
+          monthBorderColor={isDark ? "#444" : "#fff"}
           dayBorderWidth={2}
-          dayBorderColor="#ffffff"
+          dayBorderColor={isDark ? "#333" : "#fff"}
+          theme={{
+            text: {
+              fontSize: 13,
+              fill: isDark ? "#aaa" : "#333",
+            },
+            tooltip: {
+              container: {
+                background: isDark ? "#444" : "#fff",
+              },
+            },
+          }}
           // legends={[
           //   {
           //     anchor: "bottom-right",
