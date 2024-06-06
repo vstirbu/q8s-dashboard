@@ -8,6 +8,7 @@ import {
   Footprints,
   Home,
   Settings,
+  User,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 
@@ -21,9 +22,9 @@ export type MenuOption = {
 const menuOptions: Record<string, MenuOption[]> = {
   account: [
     {
-      title: "Dashboard",
+      title: "Profile",
       icon: Home,
-      href: "/account/dashboard",
+      href: "/account",
     },
     {
       title: "Jobs",
@@ -31,25 +32,12 @@ const menuOptions: Record<string, MenuOption[]> = {
       href: "/account/jobs",
     },
     { title: "Settings", icon: Settings, href: "/account/settings" },
-    // { title: "Orders", icon: ShoppingCart, href: "#" },
-    // { title: "Products", icon: Package, href: "#" },
-    // { title: "Analytics", icon: LineChart, href: "#" },
   ],
-  docs: [
+  cluster: [
     {
-      title: "Getting started",
-      icon: Footprints,
-      href: "/docs/getting-started",
-    },
-    {
-      title: "Custom images",
-      icon: FlaskConical,
-      href: "/docs/custom-images",
-    },
-    {
-      title: "Limitations",
-      icon: Construction,
-      href: "/docs/limitations",
+      title: "My account",
+      icon: User,
+      href: "/account",
     },
   ],
 };

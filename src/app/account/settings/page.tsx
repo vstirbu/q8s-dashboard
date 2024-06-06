@@ -1,7 +1,6 @@
 import { auth } from "@/lib/auth";
 
 import KubernetesConfig from "@/components/cards/cluster-config";
-import { UserInfo } from "@/components/user-info";
 
 export default async function Dashboard() {
   const session = await auth();
@@ -28,7 +27,6 @@ export default async function Dashboard() {
             </div>
           </div> */}
       <div className="flex gap-4">
-        <UserInfo user={user} className="max-w-md" />
         <KubernetesConfig className="max-w-md" />
       </div>
     </main>

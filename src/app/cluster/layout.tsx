@@ -1,14 +1,11 @@
 import Link from "next/link";
 import {
   Bell,
-  FileStack,
   Home,
   LineChart,
   Menu,
   Package,
   Package2,
-  Rotate3D,
-  Settings,
   ShoppingCart,
   Users,
 } from "lucide-react";
@@ -18,32 +15,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import ThemeToggle from "@/components/theme-toggle";
-import { MenuOption, NavigationMenu } from "@/components/navigation-menu";
+import { NavigationMenu } from "@/components/navigation-menu";
 import { UserDropdownMenu } from "@/components/user-dropdown-menu";
 import { redirect } from "next/navigation";
 import { Logo } from "@/components/brand/logo";
-
-const menuOptions: MenuOption[] = [
-  {
-    title: "Dashboard",
-    icon: Home,
-    href: "/account/dashboard",
-  },
-  {
-    title: "Jobs",
-    icon: FileStack,
-    href: "/account/jobs",
-  },
-  // {
-  //   title: "Getting Started",
-  //   icon: Footprints,
-  //   href: "/account/getting-started",
-  // },
-  { title: "Settings", icon: Settings, href: "/account/settings" },
-  // { title: "Orders", icon: ShoppingCart, href: "#" },
-  // { title: "Products", icon: Package, href: "#" },
-  // { title: "Analytics", icon: LineChart, href: "#" },
-];
 
 export default async function Dashboard({
   children,
@@ -75,7 +50,7 @@ export default async function Dashboard({
             </Button>
           </div>
           <div className="flex-1">
-            <NavigationMenu section="account" />
+            <NavigationMenu section="cluster" />
           </div>
           {/* <div className="mt-auto p-4">
             <Card x-chunk="dashboard-02-chunk-0">

@@ -8,7 +8,7 @@ export function SignIn() {
       action={async () => {
         "use server";
         await signIn("github", {
-          redirectTo: "/account/dashboard",
+          redirectTo: "/cluster/dashboard",
         });
       }}
     >
