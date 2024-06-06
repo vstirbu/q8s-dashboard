@@ -65,24 +65,24 @@ async function NodesList() {
                     className="mx-2  bg-green-700 hover:bg-green-600 text-white"
                     variant="default"
                   >
-                    ready
+                    node:ready
                   </Badge>
                 ) : (
                   <Badge className="mx-2" variant="destructive">
-                    down
+                    node:down
                   </Badge>
                 )}
                 {isGpuNode ? (
                   node.status?.allocatable?.["nvidia.com/gpu"] === "0" ? (
                     <Badge className="mx-2" variant="destructive">
-                      busy
+                      gpu:busy
                     </Badge>
                   ) : (
                     <Badge
                       className="mx-2 bg-green-700 hover:bg-green-600 text-white"
                       variant="default"
                     >
-                      available
+                      gpu:available
                     </Badge>
                   )
                 ) : null}
