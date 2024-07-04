@@ -1,6 +1,7 @@
 import { headers } from "next/headers";
 import { z } from "zod";
 import prisma from "@/lib/db";
+import { track } from "@vercel/analytics/server";
 import { getUserForServiceAccount } from "@/lib/k8s";
 
 const schema = z.object({
@@ -60,6 +61,8 @@ export async function POST(req: Request) {
       description: job,
     },
   });
+
+  await track("job-created");
 
   return new Response(null, {
     status: 200,
