@@ -22,6 +22,7 @@ import { MenuOption, NavigationMenu } from "@/components/navigation-menu";
 import { UserDropdownMenu } from "@/components/user-dropdown-menu";
 import { redirect } from "next/navigation";
 import { Logo } from "@/components/brand/logo";
+import { SystemStatus } from "@/components/system-status";
 
 const menuOptions: MenuOption[] = [
   {
@@ -174,6 +175,7 @@ export default async function Dashboard({
               </div> */}
             </SheetContent>
           </Sheet>
+          <SystemStatus severity="critical" />
           <div className="w-full flex-1">{/* <SearchProducts /> */}</div>
           {/* <DropdownMenu>
             <DropdownMenuTrigger asChild>

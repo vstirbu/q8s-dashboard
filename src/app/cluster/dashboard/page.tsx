@@ -1,6 +1,5 @@
 import { auth } from "@/lib/auth";
 
-import ClusterNodes from "@/components/k8s/cluster-nodes";
 import UsersSummary from "@/components/k8s/cluster-users";
 import { JobsCalendar } from "@/components/k8s/cluster-usage";
 
@@ -15,7 +14,6 @@ export default async function Dashboard() {
       </div>
       <div className="flex gap-4">
         <UsersSummary />
-        <ClusterNodes />
       </div>
       <JobsCalendar />
       {/* <div

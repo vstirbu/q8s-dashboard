@@ -42,7 +42,7 @@ export function JobsCalendar() {
       <CardContent className="w-full h-[200px]">
         <ResponsiveCalendar
           data={data}
-          from={`${today.getFullYear()}-01-01`}
+          from={`${today.getFullYear()}-01-02`}
           to={`${today.getFullYear()}-12-31`}
           emptyColor={isDark ? "#222" : "#eeeeee"}
           colors={["#61cdbb", "#97e3d5", "#e8c1a0", "#f47560"]}
