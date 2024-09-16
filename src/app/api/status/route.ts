@@ -14,3 +14,5 @@ export async function GET() {
     code: ready.length === 0 ? 500 : 200,
   });
 }
+
+export const revalidate = 60;
