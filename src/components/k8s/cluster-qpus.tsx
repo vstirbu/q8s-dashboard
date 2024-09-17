@@ -34,9 +34,6 @@ async function NodesList() {
           (c) => c.type === "Ready" && c.reason === "KubeletReady"
         );
 
-        const isGpuNode =
-          node.status?.capacity?.["nvidia.com/gpu"] !== undefined;
-
         return (
           <div
             key={node.metadata?.name}

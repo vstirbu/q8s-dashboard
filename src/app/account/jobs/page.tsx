@@ -13,6 +13,9 @@ export default async function Jobs() {
   const completed = await prisma.jobs.findMany({
     where: {
       ownerId: user?.id,
+      completionTime: {
+        gte: new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000),
+      },
     },
   });
 
