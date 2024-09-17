@@ -2,6 +2,7 @@ import { auth } from "@/lib/auth";
 
 import UsersSummary from "@/components/k8s/cluster-users";
 import { JobsCalendar } from "@/components/k8s/cluster-usage";
+import ClusterQPUs from "@/components/k8s/cluster-qpus";
 
 export default async function Dashboard() {
   const session = await auth();
@@ -10,10 +11,11 @@ export default async function Dashboard() {
   return (
     <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
       <div className="flex items-center">
-        <h1 className="text-lg font-semibold md:text-2xl">Cluster</h1>
+        <h1 className="text-lg font-semibold md:text-2xl">System</h1>
       </div>
       <div className="flex gap-4">
         <UsersSummary />
+        <ClusterQPUs />
       </div>
       <JobsCalendar />
       {/* <div
