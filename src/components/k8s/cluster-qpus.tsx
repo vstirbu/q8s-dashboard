@@ -81,14 +81,16 @@ async function NodesList() {
                 <div className="flex items-center gap-1">
                   <Orbit className="h-4 w-4" />
                   <span className="text-sm">Qubits:</span>
-                  <span>29</span>
+                  <span className="font-bold">29</span>
+                  <span>(simulated)</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <Cpu className="h-4 w-4" />
-                  <span className="text-sm">
-                    Cores ({node.status?.nodeInfo?.architecture}):
+                  <span className="text-sm">Cores:</span>
+                  <span className="font-bold">
+                    {node.status?.capacity?.cpu}
                   </span>
-                  <span>{node.status?.capacity?.cpu}</span>
+                  <span>({node.status?.nodeInfo?.architecture})</span>
                 </div>
               </div>
               <div className="flex items-center gap-1 text-muted-foreground">
