@@ -1,7 +1,5 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import k8s from "@kubernetes/client-node";
 import NextAuth from "next-auth";
-import Auth0Provider from "next-auth/providers/auth0";
 import GitHubProvider from "next-auth/providers/github";
 import prisma from "@/lib/db";
 import {

@@ -21,7 +21,8 @@ async function NodesList() {
 
       resolve(
         nodes.filter(
-          (node) => node.status?.capacity?.["nvidia.com/gpu"] !== undefined
+          (node) =>
+            node.metadata?.labels?.["qubernetes.dev/qpu.count"] !== undefined
         )
       );
     });
@@ -81,8 +82,12 @@ async function NodesList() {
                 <div className="flex items-center gap-1">
                   <Orbit className="h-4 w-4" />
                   <span className="text-sm">Qubits:</span>
-                  <span className="font-bold">29</span>
-                  <span>(simulated)</span>
+                  <span className="font-bold">
+                    {node.metadata?.labels!["qubernetes.dev/qubit.count"]}
+                  </span>
+                  <span>
+                    ({node.metadata?.labels!["qubernetes.dev/qubit.type"]})
+                  </span>
                 </div>
                 <div className="flex items-center gap-1">
                   <Cpu className="h-4 w-4" />
